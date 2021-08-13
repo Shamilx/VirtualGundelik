@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/activity_main.xml" value="0.18840579710144928" />
-        <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/activity_register.xml" value="0.33" />
-        <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/activity_rgistrer.xml" value="0.19519927536231885" />
+        <entry key="app/src/main/res/drawable/edittext_rounded_corners.xml" value="0.2546875" />
+        <entry key="app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.2546875" />
+        <entry key="app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.2546875" />
+        <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.2546875" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.22" />
       </map>
     </option>
   </component>

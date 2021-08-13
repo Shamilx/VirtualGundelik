@@ -1,9 +1,11 @@
 <resources>
-    <string name="app_name">VirtualGundelik</string>
-    <string name="edit_text_hint1">EmailName</string>
+    <string name="app_name">Gundelik</string>
+    <string name="edit_text_hint1">Email</string>
     <string name="edit_text_hint2">Password</string>
     <string name="repeatPassword">Repeat Password</string>
     <string name="log_in">Log in</string>
     <string name="register">Register</string>
-    <string name="havent_account_register">Havent Account? Register</string>
+    <string name="havent_account_register">New here? Register</string>
+    <string name="sign_in_text">Login</string>
+    <string name="register_text">Register</string>
 </resources>
