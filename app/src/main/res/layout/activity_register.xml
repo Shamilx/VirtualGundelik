@@ -95,7 +95,7 @@
         android:hint="@string/register"
         android:textColorHint="@color/white"
         android:textSize="17sp"
-        app:backgroundTint="@android:color/holo_purple"
+        app:backgroundTint="@color/purple_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
