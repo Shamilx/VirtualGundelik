@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">VirtualGundelik</string>
+    <string name="edit_text_hint1">Username</string>
+    <string name="edit_text_hint2">Password</string>
+    <string name="log_in">Log in</string>
+    <string name="havent_account_register">Havent Account? Register</string>
 </resources>
