@@ -40,7 +40,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:password="true" />
+            android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -51,7 +51,7 @@
         android:layout_marginBottom="120dp"
         android:hint="@string/log_in"
         android:textColorHint="@color/white"
-        android:textSize="17dp"
+        android:textSize="17sp"
         app:backgroundTint="@android:color/holo_purple"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,9 +69,10 @@
         android:layout_marginBottom="67dp"
         android:text="@string/havent_account_register"
         android:textColor="#1367B9"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialButton" />
+        app:layout_constraintTop_toBottomOf="@+id/materialButton"
+        android:onClick="Register_OnClick"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
