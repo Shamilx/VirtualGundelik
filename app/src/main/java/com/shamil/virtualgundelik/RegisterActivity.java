@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Toast;
 
@@ -17,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 
 public class RegisterActivity extends AppCompatActivity {
     private TextInputEditText EmailEditText;
@@ -48,14 +51,45 @@ public class RegisterActivity extends AppCompatActivity {
         Auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()) {
+
+                //if (!validate(EmailEditText.getText().toString())){ Toast.makeText(RegisterActivity.this, "No Correct Email Address!", Toast.LENGTH_LONG).show(); return; }
+                if (PasswordEditText.getText().toString().length() < 6){ Toast.makeText(RegisterActivity.this, "No Correct Password1!", Toast.LENGTH_LONG).show(); return; }
+                else if (PasswordRepeatEditText.getText().toString().length() < 6){ Toast.makeText(RegisterActivity.this, "No Correct Password2!", Toast.LENGTH_LONG).show();}
+                else if (PasswordRepeatEditText.getText().toString().length() != PasswordEditText.getText().toString().length()){ Toast.makeText(RegisterActivity.this, "Password repetition is not correct", Toast.LENGTH_LONG).show();}
+                else if (!checkPass(PasswordEditText.getText().length())){ Toast.makeText(RegisterActivity.this, "Password repetition is not correct", Toast.LENGTH_LONG).show();}
+                else {
                     Toast.makeText(RegisterActivity.this,"Registered!",Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(RegisterActivity.this,"Failed!",Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
+
+
+    /*public static boolean isValidEmailAddress(String email) {
+        boolean result = true;
+        try {
+            InternetAddress emailAddr = new InternetAddress(email);
+            emailAddr.validate();
+        } catch (AddressException ex) {
+            result = false;
+        }
+        return result;
+    }
+*/
+    private boolean checkPass(int passLength)
+    {
+        String pass = PasswordEditText.getText().toString();
+        String repeatPass = PasswordRepeatEditText.getText().toString();
+
+        for (int i = 0; i < passLength; i++)
+        {
+            if (repeatPass.charAt(i) != pass.charAt(i)) {return false;}
+        }
+
+        return true;
+    }
+
+
 
     private void init() {
         EmailEditText = findViewById(R.id.registerEmailInput);
@@ -63,6 +97,7 @@ public class RegisterActivity extends AppCompatActivity {
         PasswordRepeatEditText = findViewById(R.id.registerPasswordInputRepeat);
         MaterialButton = findViewById(R.id.materialButton);
         Auth = FirebaseAuth.getInstance();
+
 
 
         MaterialButton.setOnClickListener(new View.OnClickListener() {
