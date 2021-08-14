@@ -29,7 +29,6 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         init();
     }
-
     public static boolean validate(String emailStr) {
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
         return matcher.find();
@@ -41,8 +40,8 @@ public class RegisterActivity extends AppCompatActivity {
         String pass = PasswordEditText.getText().toString();
         String repeatPass = PasswordRepeatEditText.getText().toString();
 
-        if(pass.equals(repeatPass)) // gelirem
-            return true;
+        return pass.equals(repeatPass);
+
     }
     private void init() {
         EmailEditText = findViewById(R.id.registerEmailInput);
@@ -56,12 +55,13 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String txt_email = EmailEditText.getText().toString();
                 String txt_password = PasswordEditText.getText().toString();
-                String txt_password_repeat = PasswordRepeatEditText.getText().toString();
+                String txt_password_repeat = PasswordRepeatEditText.getText().toString(); // hot reload var idi
 
                 if(checkForEmptyInputAndWarnUser()) { Toast.makeText(RegisterActivity.this,"Please fill the inputs correctly!",Toast.LENGTH_LONG).show(); }
+                else if(!validate(txt_email)) { EmailEditText.setError("Please use correct Email!"); }
                 else if (txt_password.length() < 6){  PasswordEditText.setError("Please use password with at least 6 symbols!");  }
                 else if (txt_password_repeat.length() < 6){ PasswordRepeatEditText.setError("Please use password with at least 6 symbols!"); }
-                else if (!checkPass(txt_password.length())){ PasswordRepeatEditText.setError("Passwords are not same!");}
+                else if (!checkPass(txt_password.length())){  PasswordRepeatEditText.setError("Passwords are not same!");}
                 else {
                     RegisterUser(txt_email,txt_password);
                 }
@@ -69,7 +69,11 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-
+    private void clearMessages() {
+        EmailEditText.setError(null);
+        PasswordEditText.setError(null);
+        PasswordRepeatEditText.setError(null);
+    }
     private boolean checkForEmptyInputAndWarnUser() {
         boolean thereIsError = false;
 
@@ -90,7 +94,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         return thereIsError;
     }
-
     private void onComplete(Task<AuthResult> task) {
         Toast.makeText(RegisterActivity.this, "Registered!", Toast.LENGTH_LONG).show();
     }
