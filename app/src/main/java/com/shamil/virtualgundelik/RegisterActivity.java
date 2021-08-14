@@ -15,6 +15,9 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class RegisterActivity extends AppCompatActivity {
     private TextInputEditText EmailEditText;
     private TextInputEditText PasswordEditText;
@@ -23,12 +26,22 @@ public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth Auth;
 
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
+            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
         init();
+    }
+
+
+
+    public static boolean validate(String emailStr) {
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
+        return matcher.find();
     }
 
     private void RegisterUser(String email,String password) {
@@ -50,6 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
         PasswordRepeatEditText = findViewById(R.id.registerPasswordInputRepeat);
         MaterialButton = findViewById(R.id.materialButton);
         Auth = FirebaseAuth.getInstance();
+
 
         MaterialButton.setOnClickListener(new View.OnClickListener() {
             @Override
