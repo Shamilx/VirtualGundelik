@@ -23,12 +23,11 @@ import java.util.regex.Pattern;
 
 
 public class RegisterActivity extends AppCompatActivity {
-    private TextInputEditText EmailEditText;
-    private TextInputEditText PasswordEditText;
-    private TextInputEditText PasswordRepeatEditText;
-
-    private FirebaseAuth Auth;
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+    private TextInputEditText PasswordRepeatEditText;
+    private TextInputEditText PasswordEditText;
+    private TextInputEditText EmailEditText;
+    private FirebaseAuth Auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,15 +36,36 @@ public class RegisterActivity extends AppCompatActivity {
         init();
     }
 
+    private void RegisterUser(String email, String password) {
+        Auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegisterActivity.this, this::onComplete);
+    }
     public static boolean validate(String emailStr) {
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
         return matcher.find();
     }
+    private boolean checkForEmptyInputAndWarnUser() {
+        boolean thereIsError = false;
 
-    private void RegisterUser(String email, String password) {
-        Auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegisterActivity.this, this::onComplete);
+        if (TextUtils.isEmpty(EmailEditText.getText().toString())) {
+            EmailEditText.setError("Please fill that field!");
+            thereIsError = true;
+        }
+
+        if (TextUtils.isEmpty(PasswordEditText.getText().toString())) {
+            PasswordEditText.setError("Please fill that field!");
+            thereIsError = true;
+        }
+
+        if (TextUtils.isEmpty(PasswordRepeatEditText.getText().toString())) {
+            PasswordRepeatEditText.setError("Please fill that field!");
+            thereIsError = true;
+        }
+
+        return thereIsError;
     }
-
+    private void onComplete(Task<AuthResult> task) {
+        Toast.makeText(RegisterActivity.this, "Registered!", Toast.LENGTH_LONG).show();
+    }
     private boolean checkPass(int passLength) {
         String pass = PasswordEditText.getText().toString();
         String repeatPass = PasswordRepeatEditText.getText().toString();
@@ -53,7 +73,6 @@ public class RegisterActivity extends AppCompatActivity {
         return pass.equals(repeatPass);
 
     }
-
     private void init() {
         EmailEditText = findViewById(R.id.registerEmailInput);
         PasswordEditText = findViewById(R.id.registerPasswordInput);
@@ -65,11 +84,9 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
                 String txt_email = EmailEditText.getText().toString();
                 String txt_password = PasswordEditText.getText().toString();
-                String txt_password_repeat = PasswordRepeatEditText.getText().toString(); // hot reload var idi
-
+                String txt_password_repeat = PasswordRepeatEditText.getText().toString();
 
                 if (checkForEmptyInputAndWarnUser()) {
                     Toast.makeText(RegisterActivity.this, "Please fill the inputs correctly!", Toast.LENGTH_LONG).show();
@@ -91,7 +108,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 RegisterUser(txt_email, txt_password);
                             } else {
                                 new MaterialAlertDialogBuilder(RegisterActivity.this)
-                                        .setTitle("Error:")
+                                        .setTitle("Error")
                                         .setMessage("The Email that you used to register is already registered, please fix it and try again.")
                                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                             @Override
@@ -108,36 +125,5 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    private void clearMessages() {
-        EmailEditText.setError(null);
-        PasswordEditText.setError(null);
-        PasswordRepeatEditText.setError(null);
-    }
-
-    private boolean checkForEmptyInputAndWarnUser() {
-        boolean thereIsError = false;
-
-        if (TextUtils.isEmpty(EmailEditText.getText().toString())) {
-            EmailEditText.setError("Please fill that field!");
-            thereIsError = true;
-        }
-
-        if (TextUtils.isEmpty(PasswordEditText.getText().toString())) {
-            PasswordEditText.setError("Please fill that field!");
-            thereIsError = true;
-        }
-
-        if (TextUtils.isEmpty(PasswordRepeatEditText.getText().toString())) {
-            PasswordRepeatEditText.setError("Please fill that field!");
-            thereIsError = true;
-        }
-
-        return thereIsError;
-    }
-
-    private void onComplete(Task<AuthResult> task) {
-        Toast.makeText(RegisterActivity.this, "Registered!", Toast.LENGTH_LONG).show();
     }
 }
