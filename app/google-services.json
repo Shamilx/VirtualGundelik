@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "594592456235",
+    "project_id": "virtualgundelik",
+    "storage_bucket": "virtualgundelik.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:594592456235:android:24519e917d53d004c4d46e",
+        "android_client_info": {
+          "package_name": "com.shamil.virtualgundelik"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "594592456235-gmdednqiqsdqa1r9rjjkc2cradu47rue.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQu2WCPPx_Uodhp__gDIs1k7t0TIZuPUE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "594592456235-gmdednqiqsdqa1r9rjjkc2cradu47rue.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
