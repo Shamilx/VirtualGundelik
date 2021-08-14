@@ -1,15 +1,22 @@
 package com.shamil.virtualgundelik;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.SignInMethodQueryResult;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,13 +36,16 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         init();
     }
+
     public static boolean validate(String emailStr) {
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
         return matcher.find();
     }
-    private void RegisterUser(String email,String password) {
-        Auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(RegisterActivity.this, this::onComplete);
+
+    private void RegisterUser(String email, String password) {
+        Auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegisterActivity.this, this::onComplete);
     }
+
     private boolean checkPass(int passLength) {
         String pass = PasswordEditText.getText().toString();
         String repeatPass = PasswordRepeatEditText.getText().toString();
@@ -43,6 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
         return pass.equals(repeatPass);
 
     }
+
     private void init() {
         EmailEditText = findViewById(R.id.registerEmailInput);
         PasswordEditText = findViewById(R.id.registerPasswordInput);
@@ -53,17 +64,47 @@ public class RegisterActivity extends AppCompatActivity {
         registerMatieralButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 String txt_email = EmailEditText.getText().toString();
                 String txt_password = PasswordEditText.getText().toString();
                 String txt_password_repeat = PasswordRepeatEditText.getText().toString(); // hot reload var idi
 
-                if(checkForEmptyInputAndWarnUser()) { Toast.makeText(RegisterActivity.this,"Please fill the inputs correctly!",Toast.LENGTH_LONG).show(); }
-                else if(!validate(txt_email)) { EmailEditText.setError("Please use correct Email!"); }
-                else if (txt_password.length() < 6){  PasswordEditText.setError("Please use password with at least 6 symbols!");  }
-                else if (txt_password_repeat.length() < 6){ PasswordRepeatEditText.setError("Please use password with at least 6 symbols!"); }
-                else if (!checkPass(txt_password.length())){  PasswordRepeatEditText.setError("Passwords are not same!");}
-                else {
-                    RegisterUser(txt_email,txt_password);
+
+                if (checkForEmptyInputAndWarnUser()) {
+                    Toast.makeText(RegisterActivity.this, "Please fill the inputs correctly!", Toast.LENGTH_LONG).show();
+                } else if (!validate(txt_email)) {
+                    EmailEditText.setError("Please use correct Email!");
+                } else if (txt_password.length() < 6) {
+                    PasswordEditText.setError("Please use password with at least 6 symbols!");
+                } else if (txt_password_repeat.length() < 6) {
+                    PasswordRepeatEditText.setError("Please use password with at least 6 symbols!");
+                } else if (!checkPass(txt_password.length())) {
+                    PasswordRepeatEditText.setError("Passwords are not same!");
+                } else {
+                    Auth.fetchSignInMethodsForEmail(txt_email).addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+                            boolean isNewUser = task.getResult().getSignInMethods().isEmpty();
+
+                            if (isNewUser) {
+                                RegisterUser(txt_email, txt_password);
+                            } else {
+                                new MaterialAlertDialogBuilder(RegisterActivity.this)
+                                        .setTitle("Error:")
+                                        .setMessage("The Email that you used to register is already registered, please fix it and try again.")
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                dialogInterface.dismiss();
+                                            }
+                                        }).show();
+                                EmailEditText.setError("This Email already registired!");
+                            }
+
+                        }
+                    });
+
                 }
             }
         });
@@ -74,26 +115,28 @@ public class RegisterActivity extends AppCompatActivity {
         PasswordEditText.setError(null);
         PasswordRepeatEditText.setError(null);
     }
+
     private boolean checkForEmptyInputAndWarnUser() {
         boolean thereIsError = false;
 
-        if(TextUtils.isEmpty(EmailEditText.getText().toString())) {
+        if (TextUtils.isEmpty(EmailEditText.getText().toString())) {
             EmailEditText.setError("Please fill that field!");
             thereIsError = true;
         }
 
-        if(TextUtils.isEmpty(PasswordEditText.getText().toString())) {
+        if (TextUtils.isEmpty(PasswordEditText.getText().toString())) {
             PasswordEditText.setError("Please fill that field!");
             thereIsError = true;
         }
 
-        if(TextUtils.isEmpty(PasswordRepeatEditText.getText().toString())) {
+        if (TextUtils.isEmpty(PasswordRepeatEditText.getText().toString())) {
             PasswordRepeatEditText.setError("Please fill that field!");
             thereIsError = true;
         }
 
         return thereIsError;
     }
+
     private void onComplete(Task<AuthResult> task) {
         Toast.makeText(RegisterActivity.this, "Registered!", Toast.LENGTH_LONG).show();
     }
