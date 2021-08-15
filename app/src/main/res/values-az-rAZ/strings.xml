@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gündəlik</string>
+    <string name="edit_text_hint1">Email</string>
+    <string name="edit_text_hint2">Şifrə</string>
+    <string name="repeatPassword">Şifrənin Təkrarı</string>
+    <string name="log_in">Daxil Ol</string>
+    <string name="register">Qeydiyyat</string>
+    <string name="havent_account_register">Yenisən?Qeydiyattdan keç</string>
+    <string name="sign_in_text">Daxil Ol</string>
+    <string name="register_text">Qeydiyatdan keç</string>
+    <string name="email_verification_text">Waiting for Email verification…</string>
+    <string name="verified">Verified</string>
+</resources>

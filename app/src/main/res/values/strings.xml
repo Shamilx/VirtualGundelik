@@ -8,4 +8,6 @@
     <string name="havent_account_register">New here? Register</string>
     <string name="sign_in_text">Login</string>
     <string name="register_text">Register</string>
+    <string name="email_verification_text">Waiting for Email verification…</string>
+    <string name="verified">Verified</string>
 </resources>
