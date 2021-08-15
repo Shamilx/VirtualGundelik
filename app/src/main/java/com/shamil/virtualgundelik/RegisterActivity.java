@@ -57,22 +57,6 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(RegisterActivity.this, "No", Toast.LENGTH_LONG).show();
             }
         }));
-
-        /*if(user != null) {
-            user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if (task.isSuccessful())
-                    {
-                        Toast.makeText(RegisterActivity.this, "Yes User", Toast.LENGTH_LONG).show();
-                    }else{
-                        Toast.makeText(RegisterActivity.this, task.getException().getLocalizedMessage(), Toast.LENGTH_LONG).show();
-                    }
-                }
-            });
-        } else {
-            Toast.makeText(RegisterActivity.this,"User is null!",Toast.LENGTH_LONG).show();
-        }*/
     }
     public static boolean validate(String emailStr) {
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
