@@ -57,7 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             });
         } else {
-            Toast.makeText(RegisterActivity.this,"User is null!",Toast.LENGTH_LONG);
+            Toast.makeText(RegisterActivity.this,"User is null!",Toast.LENGTH_LONG).show();
         }
     }
     public static boolean validate(String emailStr) {
