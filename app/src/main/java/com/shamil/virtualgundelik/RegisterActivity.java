@@ -16,6 +16,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.SignInMethodQueryResult;
 
 import java.util.regex.Matcher;
@@ -28,6 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
     private TextInputEditText PasswordEditText;
     private TextInputEditText EmailEditText;
     private FirebaseAuth Auth;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,19 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void RegisterUser(String email, String password) {
-        Auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegisterActivity.this, this::onComplete);
+        Auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()) {
+                    // Auth.signInWithEmailAndPassword(email, password);
+                    user = Auth.getCurrentUser();
+                }
+            }
+        });
+
+        if(user != null) {
+            user.sendEmailVerification();
+        }
     }
     public static boolean validate(String emailStr) {
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
@@ -62,9 +76,6 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         return thereIsError;
-    }
-    private void onComplete(Task<AuthResult> task) {
-        Toast.makeText(RegisterActivity.this, "Registered!", Toast.LENGTH_LONG).show();
     }
     private boolean checkPass(int passLength) {
         String pass = PasswordEditText.getText().toString();
