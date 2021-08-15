@@ -50,7 +50,14 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         if(user != null) {
-            user.sendEmailVerification();
+            user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+
+                }
+            });
+        } else {
+            Toast.makeText(RegisterActivity.this,"User is null!",Toast.LENGTH_LONG);
         }
     }
     public static boolean validate(String emailStr) {
