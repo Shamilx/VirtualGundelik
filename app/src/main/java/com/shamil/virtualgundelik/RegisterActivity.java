@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -38,14 +39,18 @@ public class RegisterActivity extends AppCompatActivity {
     private void RegisterUser(String email, String password) {
         Auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener((task -> {
             if (task.isSuccessful()){
-
                 Auth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
-                            Toast.makeText(RegisterActivity.this, "send emali", Toast.LENGTH_LONG).show();
-                        }else{
-                            Toast.makeText(RegisterActivity.this, "No Send Email", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(RegisterActivity.this,VerifyEmailActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } else{
+                            new MaterialAlertDialogBuilder(RegisterActivity.this)
+                                    .setTitle("Error")
+                                    .setMessage("Something went wrong,please try again later,or contact to Developers.")
+                                    .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
                         }
                     }
                 });
