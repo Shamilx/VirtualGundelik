@@ -39,26 +39,40 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void RegisterUser(String email, String password) {
-        Auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()) {
-                    // Auth.signInWithEmailAndPassword(email, password);
-                    user = Auth.getCurrentUser();
-                }
-            }
-        });
+        Auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener((task -> {
 
-        if(user != null) {
+            if (task.isSuccessful()){
+
+                Auth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            Toast.makeText(RegisterActivity.this, "send emali", Toast.LENGTH_LONG).show();
+                        }else{
+                            Toast.makeText(RegisterActivity.this, "No Send Email", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+            }else{
+                Toast.makeText(RegisterActivity.this, "No", Toast.LENGTH_LONG).show();
+            }
+        }));
+
+        /*if(user != null) {
             user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
-
+                    if (task.isSuccessful())
+                    {
+                        Toast.makeText(RegisterActivity.this, "Yes User", Toast.LENGTH_LONG).show();
+                    }else{
+                        Toast.makeText(RegisterActivity.this, task.getException().getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                    }
                 }
             });
         } else {
             Toast.makeText(RegisterActivity.this,"User is null!",Toast.LENGTH_LONG).show();
-        }
+        }*/
     }
     public static boolean validate(String emailStr) {
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
