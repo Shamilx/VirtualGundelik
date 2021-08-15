@@ -40,7 +40,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void RegisterUser(String email, String password) {
         Auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener((task -> {
-
             if (task.isSuccessful()){
 
                 Auth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -57,29 +56,11 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(RegisterActivity.this, "No", Toast.LENGTH_LONG).show();
             }
         }));
-        Auth.createUserWithEmailAndPassword(email, password);
-        Auth.signInWithEmailAndPassword(email, password);
-        FirebaseUser User = FirebaseAuth.getInstance().getCurrentUser();
-
-
-        User.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(RegisterActivity.this, "Sent email", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(RegisterActivity.this, "Failed!", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
     }
-
-
     public static boolean validate(String emailStr) {
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
         return matcher.find();
     }
-
     private boolean checkForEmptyInputAndWarnUser() {
         boolean thereIsError = false;
 
@@ -100,7 +81,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         return thereIsError;
     }
-
     private boolean checkPass(int passLength) {
         String pass = PasswordEditText.getText().toString();
         String repeatPass = PasswordRepeatEditText.getText().toString();
@@ -108,7 +88,6 @@ public class RegisterActivity extends AppCompatActivity {
         return pass.equals(repeatPass);
 
     }
-
     private void init() {
         EmailEditText = findViewById(R.id.registerEmailInput);
         PasswordEditText = findViewById(R.id.registerPasswordInput);
@@ -134,27 +113,19 @@ public class RegisterActivity extends AppCompatActivity {
                 } else if (!checkPass(txt_password.length())) {
                     PasswordRepeatEditText.setError("Passwords are not same!");
                 } else {
-                    Auth.fetchSignInMethodsForEmail(txt_email).addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
-                            boolean isNewUser = task.getResult().getSignInMethods().isEmpty();
+                    Auth.fetchSignInMethodsForEmail(txt_email).addOnCompleteListener(task -> {
+                        boolean isNewUser = task.getResult().getSignInMethods().isEmpty();
 
-                            if (isNewUser) {
-                                RegisterUser(txt_email, txt_password);
-                            } else {
-                                new MaterialAlertDialogBuilder(RegisterActivity.this)
-                                        .setTitle("Error")
-                                        .setMessage("The Email that you used to register is already registered, please fix it and try again.")
-                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialogInterface, int i) {
-                                                dialogInterface.dismiss();
-                                            }
-                                        }).show();
-                                EmailEditText.setError("This Email already registired!");
-                            }
-
+                        if (isNewUser) {
+                            RegisterUser(txt_email, txt_password);
+                        } else {
+                            new MaterialAlertDialogBuilder(RegisterActivity.this)
+                                    .setTitle("Error")
+                                    .setMessage("The Email that you used to register is already registered, please fix it and try again.")
+                                    .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
+                            EmailEditText.setError("This Email already registired!");
                         }
+
                     });
 
                 }
