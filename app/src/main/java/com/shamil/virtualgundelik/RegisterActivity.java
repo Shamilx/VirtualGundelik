@@ -39,23 +39,14 @@ public class RegisterActivity extends AppCompatActivity {
     private void RegisterUser(String email, String password) {
         Auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener((task -> {
             if (task.isSuccessful()){
-                Auth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                            Intent intent = new Intent(RegisterActivity.this,VerifyEmailActivity.class);
-                            startActivity(intent);
-                            finish();
-                        } else{
-                            new MaterialAlertDialogBuilder(RegisterActivity.this)
-                                    .setTitle("Error")
-                                    .setMessage("Something went wrong,please try again later,or contact to Developers.")
-                                    .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
-                        }
-                    }
-                });
+                Intent intent = new Intent(RegisterActivity.this,VerifyEmailActivity.class);
+                startActivity(intent);
+                finish();
             }else{
-                Toast.makeText(RegisterActivity.this, "No", Toast.LENGTH_LONG).show();
+                new MaterialAlertDialogBuilder(RegisterActivity.this)
+                        .setTitle("Error")
+                        .setMessage("Something went wrong,please try again later,or contact to Developers.")
+                        .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
             }
         }));
     }
@@ -129,7 +120,6 @@ public class RegisterActivity extends AppCompatActivity {
                         }
 
                     });
-
                 }
             }
         });
