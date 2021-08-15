@@ -83,7 +83,6 @@ public class RegisterActivity extends AppCompatActivity {
         registerMatieralButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 String txt_email = EmailEditText.getText().toString();
                 String txt_password = PasswordEditText.getText().toString();
                 String txt_password_repeat = PasswordRepeatEditText.getText().toString();

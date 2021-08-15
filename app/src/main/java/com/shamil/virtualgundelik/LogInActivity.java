@@ -1,5 +1,6 @@
 package com.shamil.virtualgundelik;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,9 +9,13 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LogInActivity extends AppCompatActivity {
     private TextInputEditText EmailEditText;
@@ -44,8 +49,19 @@ public class LogInActivity extends AppCompatActivity {
                 } else if (txt_password.length() < 6) {
                     PasswordEditText.setError("Please use password with at least 6 symbols!");
                 } else {
-                    Auth.signInWithEmailAndPassword(txt_email,txt_password);
-                    Toast.makeText(LogInActivity.this, "Log in succses!", Toast.LENGTH_LONG).show();
+                    Auth.signInWithEmailAndPassword(txt_email,txt_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()) {
+                                Toast.makeText(LogInActivity.this, "Log in succses!", Toast.LENGTH_LONG).show();
+                                FirebaseUser user = Auth.getCurrentUser();
+
+
+                            } else {
+                                Toast.makeText(LogInActivity.this, "Log in failed!", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
                 }
             }
         });

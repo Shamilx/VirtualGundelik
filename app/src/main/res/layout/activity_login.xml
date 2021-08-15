@@ -40,6 +40,9 @@
             android:id="@+id/LoginEmailEditText"
             android:layout_width="match_parent"
             android:maxLines="1"
+            android:inputType="text"
+            android:maxLength="254"
+            android:scrollHorizontally="true"
             android:layout_height="match_parent"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -61,6 +64,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:maxLines="1"
+            android:maxLength="30"
+            android:scrollHorizontally="true"
             android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -96,6 +101,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialButton"
+        app:layout_constraintTop_toBottomOf="@+id/LogInMaterialButton"
         android:onClick="Register_OnClick"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
