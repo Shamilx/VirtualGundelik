@@ -14,9 +14,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.SignInMethodQueryResult;
 
 import java.util.regex.Matcher;
@@ -29,7 +27,6 @@ public class RegisterActivity extends AppCompatActivity {
     private TextInputEditText PasswordEditText;
     private TextInputEditText EmailEditText;
     private FirebaseAuth Auth;
-    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +78,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         return thereIsError;
     }
-    private boolean checkPass(int passLength) {
+    private boolean checkPass() {
         String pass = PasswordEditText.getText().toString();
         String repeatPass = PasswordRepeatEditText.getText().toString();
 
@@ -110,7 +107,7 @@ public class RegisterActivity extends AppCompatActivity {
                     PasswordEditText.setError("Please use password with at least 6 symbols!");
                 } else if (txt_password_repeat.length() < 6) {
                     PasswordRepeatEditText.setError("Please use password with at least 6 symbols!");
-                } else if (!checkPass(txt_password.length())) {
+                } else if (!checkPass()) {
                     PasswordRepeatEditText.setError("Passwords are not same!");
                 } else {
                     Auth.fetchSignInMethodsForEmail(txt_email).addOnCompleteListener(task -> {
