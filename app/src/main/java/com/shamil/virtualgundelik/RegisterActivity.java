@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
     private TextInputEditText PasswordEditText;
     private TextInputEditText EmailEditText;
     private FirebaseAuth Auth;
-    FirebaseUser user;
+    private FirebaseUser User;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,31 +40,28 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void RegisterUser(String email, String password) {
-        Auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        Auth.createUserWithEmailAndPassword(email, password);
+        Auth.signInWithEmailAndPassword(email, password);
+        FirebaseUser User = FirebaseAuth.getInstance().getCurrentUser();
+
+
+        User.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()) {
-                    // Auth.signInWithEmailAndPassword(email, password);
-                    user = Auth.getCurrentUser();
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(RegisterActivity.this, "Sent email", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(RegisterActivity.this, "Failed!", Toast.LENGTH_LONG).show();
                 }
             }
         });
-
-        if(user != null) {
-            user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-
-                }
-            });
-        } else {
-            Toast.makeText(RegisterActivity.this,"User is null!",Toast.LENGTH_LONG).show();
-        }
     }
+
     public static boolean validate(String emailStr) {
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
         return matcher.find();
     }
+
     private boolean checkForEmptyInputAndWarnUser() {
         boolean thereIsError = false;
 
@@ -84,6 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         return thereIsError;
     }
+
     private boolean checkPass(int passLength) {
         String pass = PasswordEditText.getText().toString();
         String repeatPass = PasswordRepeatEditText.getText().toString();
@@ -91,6 +90,7 @@ public class RegisterActivity extends AppCompatActivity {
         return pass.equals(repeatPass);
 
     }
+
     private void init() {
         EmailEditText = findViewById(R.id.registerEmailInput);
         PasswordEditText = findViewById(R.id.registerPasswordInput);
