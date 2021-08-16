@@ -70,10 +70,9 @@ public class VerifyEmailActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Auth.getCurrentUser().reload();
-                Auth.getCurrentUser().reload();
+                CheckIfEmailVerified();
 
-                if(Auth.getCurrentUser().isEmailVerified()) {
+                if(CheckIfEmailVerified()) {
                     startActivity(new Intent(VerifyEmailActivity.this,GetInfoActivity.class));
                     finish();
                 } else {
@@ -84,7 +83,16 @@ public class VerifyEmailActivity extends AppCompatActivity {
                 }
             }
         });
+    }
 
+    public boolean CheckIfEmailVerified() {
+        Auth.getCurrentUser().reload();
+
+        if(Auth.getCurrentUser().isEmailVerified()) {
+            return true;
+        } else {
+            return false;
+        }
 
     }
 }
