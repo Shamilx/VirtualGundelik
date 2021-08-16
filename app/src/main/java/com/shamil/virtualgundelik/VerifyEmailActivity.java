@@ -72,30 +72,51 @@ public class VerifyEmailActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             boolean threadRunning = true;
             int count = 0;
+            MaterialAlertDialogBuilder builder;
 
             @Override
             public void run() {
-                if (threadRunning) {
+                while (threadRunning) {
+                    Auth.getCurrentUser().reload();
+
                     if (Auth.getCurrentUser().isEmailVerified()) {
-                        threadRunning = false;
-                        StopThread();
+                        if(builder == null) {
+                            builder = new MaterialAlertDialogBuilder(VerifyEmailActivity.this)
+                                    .setTitle("Done")
+                                    .setMessage("You have been verified!")
+                                    .setPositiveButton("NEXT", (dialogInterface, i) -> {
+                                        startActivity(intent);
+                                        finish();
+                                        threadRunning = false;
+                                    });
+                            builder.show();
+                        }
                     } else {
                         count++;
-                        if (count == 30) {
+                        if (count > 300) {
+                            if(Auth.getCurrentUser().isEmailVerified()) {
+                                new MaterialAlertDialogBuilder(VerifyEmailActivity.this)
+                                        .setTitle("Error")
+                                        .setMessage("We have determined that you didnt verify your email in 5 minutes,try to log in.")
+                                        .setPositiveButton("OK", (dialogInterface, i) -> { dialogInterface.dismiss(); finish(); }).show();
+
+
+                            }
                             new MaterialAlertDialogBuilder(VerifyEmailActivity.this)
                                     .setTitle("Error")
                                     .setMessage("Something went wrong,please try again later,or contact to Developers.")
                                     .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
                         }
                     }
+
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }).start();
     }
 
-    private void StopThread() {
-        thread.stop();
-        startActivity(intent);
-        finish();
-    }
 }
