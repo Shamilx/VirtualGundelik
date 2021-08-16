@@ -2,6 +2,7 @@ package com.shamil.virtualgundelik;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -70,7 +71,7 @@ public class VerifyEmailActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CheckIfEmailVerified();
+
 
                 if(CheckIfEmailVerified()) {
                     startActivity(new Intent(VerifyEmailActivity.this,GetInfoActivity.class));
@@ -79,7 +80,7 @@ public class VerifyEmailActivity extends AppCompatActivity {
                     new MaterialAlertDialogBuilder(VerifyEmailActivity.this)
                             .setTitle("You are not Verified!")
                             .setMessage("We have detected that you are not verified try again!")
-                            .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
+                            .setPositiveButton("Try Again", (dialogInterface, i) ->{  dialogInterface.dismiss(); button.performClick();}).show();
                 }
             }
         });
