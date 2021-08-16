@@ -3,6 +3,7 @@ package com.shamil.virtualgundelik;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -18,6 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 public class VerifyEmailActivity extends AppCompatActivity {
     private boolean doubleBackToExitPressedOnce = false;
     private FirebaseAuth Auth;
+    private Thread thread;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,15 +50,14 @@ public class VerifyEmailActivity extends AppCompatActivity {
     }
 
     private void init() {
-        Button button = findViewById(R.id.VerifiedButton);
-
         Auth = FirebaseAuth.getInstance();
+        intent = new Intent();
 
         Auth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()) {
-                    button.setClickable(true);
+                    StartThread();
                 } else {
                     new MaterialAlertDialogBuilder(VerifyEmailActivity.this)
                             .setTitle("Error")
@@ -64,24 +66,35 @@ public class VerifyEmailActivity extends AppCompatActivity {
                 }
             }
         });
+    }
 
-        button.setOnClickListener(new View.OnClickListener() {
+    private void StartThread() {
+        new Thread(new Runnable() {
+            boolean threadRunning = true;
+            int count = 0;
+
             @Override
-            public void onClick(View view) {
-                Auth.getCurrentUser().reload();
+            public void run() {
+                if(threadRunning) {
+                    if (Auth.getCurrentUser().isEmailVerified()) {
 
-                if(Auth.getCurrentUser().isEmailVerified()) {
-                    new MaterialAlertDialogBuilder(VerifyEmailActivity.this)
-                            .setTitle("YES WE DID IT")
-                            .setMessage("YESSSS.")
-                            .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
-                } else {
-                    new MaterialAlertDialogBuilder(VerifyEmailActivity.this)
-                            .setTitle("Error")
-                            .setMessage("Something went wrong,please try again later,or contact to Developers.")
-                            .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
+                        threadRunning = false;
+                        StopThread();
+                    } else {
+                        count++;
+                        if(count == 30) {
+                            new MaterialAlertDialogBuilder(VerifyEmailActivity.this)
+                                    .setTitle("Error")
+                                    .setMessage("Something went wrong,please try again later,or contact to Developers.")
+                                    .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
+                        }
+                    }
                 }
             }
-        });
+        }).start();
+    }
+
+    private void StopThread() {
+        thread.stop();
     }
 }

@@ -12,6 +12,7 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1328125" />
         <entry key="app/src/main/res/layout-v26/activity_verify_email.xml" value="0.23854166666666668" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.23854166666666668" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.23854166666666668" />
         <entry key="app/src/main/res/layout/activity_verify_email.xml" value="0.23854166666666668" />
       </map>
     </option>
