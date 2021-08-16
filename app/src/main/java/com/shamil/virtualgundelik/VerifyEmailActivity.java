@@ -50,10 +50,8 @@ public class VerifyEmailActivity extends AppCompatActivity {
     }
 
     private void init() {
-        Button button = findViewById(R.id.VerifiedButton);
-
         Auth = FirebaseAuth.getInstance();
-        intent = new Intent();
+        intent = new Intent(this,GetInfoActivity.class);
 
         Auth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -77,37 +75,19 @@ public class VerifyEmailActivity extends AppCompatActivity {
 
             @Override
             public void run() {
-                if(threadRunning) {
+                if (threadRunning) {
                     if (Auth.getCurrentUser().isEmailVerified()) {
-
                         threadRunning = false;
                         StopThread();
                     } else {
                         count++;
-                        if(count == 30) {
+                        if (count == 30) {
                             new MaterialAlertDialogBuilder(VerifyEmailActivity.this)
                                     .setTitle("Error")
                                     .setMessage("Something went wrong,please try again later,or contact to Developers.")
                                     .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
                         }
                     }
-            public void onClick(View view) {
-                Auth.getCurrentUser().reload();
-
-                if(Auth.getCurrentUser().isEmailVerified()) {
-                    new MaterialAlertDialogBuilder(VerifyEmailActivity.this)
-                            .setTitle("YES WE DID IT")
-                            .setMessage("YESSSS.")
-                            .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
-
-                    Intent intent = new Intent(VerifyEmailActivity.this, GetInfoActivity.class);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    new MaterialAlertDialogBuilder(VerifyEmailActivity.this)
-                            .setTitle("Error")
-                            .setMessage("Something went wrong,please try again later,or contact to Developers.")
-                            .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
                 }
             }
         }).start();
@@ -115,5 +95,7 @@ public class VerifyEmailActivity extends AppCompatActivity {
 
     private void StopThread() {
         thread.stop();
+        startActivity(intent);
+        finish();
     }
 }
