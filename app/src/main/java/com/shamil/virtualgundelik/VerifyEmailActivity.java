@@ -51,7 +51,7 @@ public class VerifyEmailActivity extends AppCompatActivity {
 
     private void init() {
         Auth = FirebaseAuth.getInstance();
-        intent = new Intent(this,GetInfoActivity.class);
+        intent = new Intent(VerifyEmailActivity.this,GetInfoActivity.class);
 
         Auth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -80,7 +80,10 @@ public class VerifyEmailActivity extends AppCompatActivity {
                     Auth.getCurrentUser().reload();
 
                     if (Auth.getCurrentUser().isEmailVerified()) {
-                        if(builder == null) {
+                        startActivity(intent);
+                        finish();
+                        threadRunning = false;
+                        /*if(builder == null) {
                             builder = new MaterialAlertDialogBuilder(VerifyEmailActivity.this)
                                     .setTitle("Done")
                                     .setMessage("You have been verified!")
@@ -90,7 +93,7 @@ public class VerifyEmailActivity extends AppCompatActivity {
                                         threadRunning = false;
                                     });
                             builder.show();
-                        }
+                        }*/
                     } else {
                         count++;
                         if (count > 300) {
