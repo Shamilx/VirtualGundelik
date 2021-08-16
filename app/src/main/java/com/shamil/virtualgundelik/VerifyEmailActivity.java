@@ -50,6 +50,8 @@ public class VerifyEmailActivity extends AppCompatActivity {
     }
 
     private void init() {
+        Button button = findViewById(R.id.VerifiedButton);
+
         Auth = FirebaseAuth.getInstance();
         intent = new Intent();
 
@@ -89,6 +91,23 @@ public class VerifyEmailActivity extends AppCompatActivity {
                                     .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
                         }
                     }
+            public void onClick(View view) {
+                Auth.getCurrentUser().reload();
+
+                if(Auth.getCurrentUser().isEmailVerified()) {
+                    new MaterialAlertDialogBuilder(VerifyEmailActivity.this)
+                            .setTitle("YES WE DID IT")
+                            .setMessage("YESSSS.")
+                            .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
+
+                    Intent intent = new Intent(VerifyEmailActivity.this, GetInfoActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    new MaterialAlertDialogBuilder(VerifyEmailActivity.this)
+                            .setTitle("Error")
+                            .setMessage("Something went wrong,please try again later,or contact to Developers.")
+                            .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
                 }
             }
         }).start();

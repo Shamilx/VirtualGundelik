@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Gündəlik</string>
-    <string name="edit_text_hint1">Email</string>
+    <string name="edit_text_hint1">E-poçt</string>
     <string name="edit_text_hint2">Şifrə</string>
     <string name="repeatPassword">Şifrənin Təkrarı</string>
     <string name="log_in">Daxil Ol</string>
@@ -9,6 +9,13 @@
     <string name="havent_account_register">Yenisən?Qeydiyattdan keç</string>
     <string name="sign_in_text">Daxil Ol</string>
     <string name="register_text">Qeydiyatdan keç</string>
-    <string name="email_verification_text">Waiting for Email verification…</string>
-    <string name="verified">Verified</string>
+    <string name="email_verification_text">E -poçt doğrulaması gözlənilir…</string>
+    <string name="verified">Doğrulanmışdır</string>
+    <string name="informations">Məlumatlar</string>
+    <string name="edit_text_hint3">Adiniz</string>
+    <string name="edit_text_hint4">Soyadiniz</string>
+    <string name="edit_text_hint5">Telefon Nömrəsi</string>
+    <string name="day_of_birth">Doğum tarixinizi daxil edin. (Məcburi deyil)</string>
+    <string name="save">Yadda saxla</string>
+
 </resources>
