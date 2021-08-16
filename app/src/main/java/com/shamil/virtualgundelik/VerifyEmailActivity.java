@@ -72,7 +72,7 @@ public class VerifyEmailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
+                
                 if(CheckIfEmailVerified()) {
                     startActivity(new Intent(VerifyEmailActivity.this,GetInfoActivity.class));
                     finish();

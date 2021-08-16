@@ -11,9 +11,8 @@
     <string name="email_verification_text">Waiting for Email verification…</string>
     <string name="verified">Next</string>
     <string name="informations">Informations</string>
-    <string name="edit_text_hint3">Name</string>
-    <string name="edit_text_hint4">Lastname</string>
-    <string name="edit_text_hint5">Phone Number(Optional)</string>
+    <string name="edit_text_hint3">First Name</string>
+    <string name="edit_text_hint4">Last Name</string>
     <string name="day_of_birth">Enter your date of birth</string>
     <string name="save">Save</string>
 </resources>

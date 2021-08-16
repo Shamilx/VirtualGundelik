@@ -54,7 +54,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="320dp"
+        android:layout_marginBottom="270dp"
         android:hint="@string/edit_text_hint4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,30 +75,6 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outlinedTextField3"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/edit_text_hint5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.468"
-        app:startIconDrawable="@drawable/ic_phone_24dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/registerUserPhoneEditText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="text"
-            android:maxLength="254"
-            android:maxLines="1"
-            android:scrollHorizontally="true" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/outlinedTextField4"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="wrap_content"
@@ -108,12 +84,12 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.83"
+        app:layout_constraintVertical_bias="0.769"
         app:startIconDrawable="@drawable/ic_day_of_birth_24dp">
 
         <com.google.android.material.textfield.MaterialAutoCompleteTextView
             android:id="@+id/LoginEmailEditText4"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLength="254"
             android:maxLines="1"
@@ -124,11 +100,11 @@
             android:id="@+id/registerDatePicker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:calendarTextColor="@color/purple_700"
             android:calendarViewShown="false"
             android:datePickerMode="spinner"
-            android:spinnersShown="true"
-            android:layout_gravity="center_horizontal"
-            android:calendarTextColor="@color/purple_700"/>
+            android:spinnersShown="true" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -146,5 +122,5 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/outlinedTextField2"
-        app:layout_constraintVertical_bias="0.959" />
+        app:layout_constraintVertical_bias="0.891" />
 </androidx.constraintlayout.widget.ConstraintLayout>
