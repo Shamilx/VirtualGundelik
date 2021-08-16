@@ -51,13 +51,13 @@ public class VerifyEmailActivity extends AppCompatActivity {
 
     private void init() {
         Auth = FirebaseAuth.getInstance();
-        button.setClickable(true);
+        button = findViewById(R.id.VerifyButton);
 
         Auth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()) {
-
+                    button.setClickable(true);
                 } else {
                     new MaterialAlertDialogBuilder(VerifyEmailActivity.this)
                             .setTitle("Error")
@@ -66,6 +66,25 @@ public class VerifyEmailActivity extends AppCompatActivity {
                 }
             }
         });
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Auth.getCurrentUser().reload();
+                Auth.getCurrentUser().reload();
+
+                if(Auth.getCurrentUser().isEmailVerified()) {
+                    startActivity(new Intent(VerifyEmailActivity.this,GetInfoActivity.class));
+                    finish();
+                } else {
+                    new MaterialAlertDialogBuilder(VerifyEmailActivity.this)
+                            .setTitle("You are not Verified!")
+                            .setMessage("We have detected that you are not verified try again!")
+                            .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
+                }
+            }
+        });
+
 
     }
 }

@@ -6,16 +6,16 @@
     <string name="repeatPassword">Şifrənin Təkrarı</string>
     <string name="log_in">Daxil Ol</string>
     <string name="register">Qeydiyyat</string>
-    <string name="havent_account_register">Yenisən?Qeydiyattdan keç</string>
+    <string name="havent_account_register">Yenisən? Qeydiyattdan keç</string>
     <string name="sign_in_text">Daxil Ol</string>
     <string name="register_text">Qeydiyatdan keç</string>
     <string name="email_verification_text">E -poçt doğrulaması gözlənilir…</string>
-    <string name="verified">Doğrulanmışdır</string>
+    <string name="verified">İrəli</string>
     <string name="informations">Məlumatlar</string>
-    <string name="edit_text_hint3">Adiniz</string>
-    <string name="edit_text_hint4">Soyadiniz</string>
-    <string name="edit_text_hint5">Telefon Nömrəsi</string>
-    <string name="day_of_birth">Doğum tarixinizi daxil edin. (Məcburi deyil)</string>
+    <string name="edit_text_hint3">Ad</string>
+    <string name="edit_text_hint4">Soyad</string>
+    <string name="edit_text_hint5">Telefon Nömrəsi (Məcburi deyil)</string>
+    <string name="day_of_birth">Doğum tarixinizi daxil edin.</string>
     <string name="save">Yadda saxla</string>
 
 </resources>
