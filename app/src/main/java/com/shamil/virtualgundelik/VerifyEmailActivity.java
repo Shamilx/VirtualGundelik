@@ -10,6 +10,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -74,6 +76,12 @@ public class VerifyEmailActivity extends AppCompatActivity {
 
                 
                 if(CheckIfEmailVerified()) {
+                    TextView textView = findViewById(R.id.textView);
+                    textView.setVisibility(TextView.INVISIBLE);
+                    ProgressBar progressBar = findViewById(R.id.progress_circular);
+                    progressBar.setVisibility(ProgressBar.VISIBLE);
+                    button.setVisibility(Button.INVISIBLE);
+
                     startActivity(new Intent(VerifyEmailActivity.this,GetInfoActivity.class));
                     finish();
                 } else {

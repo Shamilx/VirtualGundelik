@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -15,6 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.SignInMethodQueryResult;
 
@@ -27,6 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
     private TextInputEditText PasswordRepeatEditText;
     private TextInputEditText PasswordEditText;
     private TextInputEditText EmailEditText;
+    private MaterialButton registerMatieralButton;
     private FirebaseAuth Auth;
 
     @Override
@@ -39,8 +42,18 @@ public class RegisterActivity extends AppCompatActivity {
     private void RegisterUser(String email, String password) {
         Auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener((task -> {
             if (task.isSuccessful()){
-                Intent intent = new Intent(RegisterActivity.this,VerifyEmailActivity.class);
-                startActivity(intent);
+                TextInputLayout textInputLayout1 = findViewById(R.id.outlinedTextField);
+                TextInputLayout textInputLayout2 = findViewById(R.id.outlinedTextField2);
+                TextInputLayout textInputLayout3 = findViewById(R.id.outlinedTextField3);
+                ProgressBar progressBar = findViewById(R.id.progress_circular);
+
+                textInputLayout1.setVisibility(TextInputLayout.INVISIBLE);
+                textInputLayout2.setVisibility(TextInputLayout.INVISIBLE);
+                textInputLayout3.setVisibility(TextInputLayout.INVISIBLE);
+                registerMatieralButton.setVisibility(MaterialButton.INVISIBLE);
+                progressBar.setVisibility(ProgressBar.VISIBLE);
+
+                startActivity(new Intent(RegisterActivity.this,VerifyEmailActivity.class));
                 finish();
             }else{
                 new MaterialAlertDialogBuilder(RegisterActivity.this)
@@ -85,7 +98,7 @@ public class RegisterActivity extends AppCompatActivity {
         EmailEditText = findViewById(R.id.registerEmailInput);
         PasswordEditText = findViewById(R.id.registerPasswordInput);
         PasswordRepeatEditText = findViewById(R.id.registerPasswordInputRepeat);
-        MaterialButton registerMatieralButton = findViewById(R.id.materialButton);
+        registerMatieralButton = findViewById(R.id.materialButton);
         Auth = FirebaseAuth.getInstance();
 
         registerMatieralButton.setOnClickListener(new View.OnClickListener() {

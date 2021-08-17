@@ -17,9 +17,11 @@ import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.type.DateTime;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,7 +44,13 @@ public class GetInfoActivity extends AppCompatActivity {
         EditText lastName = findViewById(R.id.registerUserLastnameEditText);
         DatePicker time = findViewById(R.id.registerDatePicker);
         MaterialButton button = findViewById(R.id.SaveMaterialButton);
+        Calendar cal = Calendar.getInstance();
         firestore = FirebaseFirestore.getInstance();
+
+        long afterYearNow = System.currentTimeMillis() - // milisaniye yeni ili saniyeye cevirib yazmaq lazim deyesen
+
+
+        time.getDa
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +66,7 @@ public class GetInfoActivity extends AppCompatActivity {
                     return;
                 }
 
+
                 DocumentReference documentReference = firestore.collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
                 Map<String,Object> map = new HashMap<String,Object>();
 
@@ -71,7 +80,7 @@ public class GetInfoActivity extends AppCompatActivity {
                         if(task.isSuccessful()) {
                             Toast.makeText(GetInfoActivity.this,"WORKS",Toast.LENGTH_LONG).show();
                         } else {
-                            Toast.makeText(GetInfoActivity.this,"WORKS",Toast.LENGTH_LONG).show();
+                            Toast.makeText(GetInfoActivity.this,"No WORKS",Toast.LENGTH_LONG).show();
                         }
                     }
                 });
