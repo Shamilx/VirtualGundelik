@@ -28,4 +28,5 @@
     <string name="java11">You are not Verified!</string>
     <string name="java12">We have detected that you are not verified,try again!</string>
     <string name="java13">Try Again</string>
+    <string name="java14">Email or password is wrong!</string>
 </resources>

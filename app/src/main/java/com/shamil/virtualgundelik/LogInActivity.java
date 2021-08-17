@@ -98,10 +98,7 @@ public class LogInActivity extends AppCompatActivity {
                                     }
                                 });
                             } else {
-                                new MaterialAlertDialogBuilder(LogInActivity.this)
-                                        .setTitle(getString(R.string.java4))
-                                        .setMessage(getString(R.string.java5))
-                                        .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
+                                PasswordEditText.setError(getString(R.string.java14));
                             }
                         }
                     });
