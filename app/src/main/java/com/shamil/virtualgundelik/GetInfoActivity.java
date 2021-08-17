@@ -47,10 +47,6 @@ public class GetInfoActivity extends AppCompatActivity {
         Calendar cal = Calendar.getInstance();
         firestore = FirebaseFirestore.getInstance();
 
-        long afterYearNow = System.currentTimeMillis() - // milisaniye yeni ili saniyeye cevirib yazmaq lazim deyesen
-
-
-        time.getDa
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,13 +62,13 @@ public class GetInfoActivity extends AppCompatActivity {
                     return;
                 }
 
-
                 DocumentReference documentReference = firestore.collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
                 Map<String,Object> map = new HashMap<String,Object>();
 
                 map.put("firstName",firstName.getText().toString());
                 map.put("lastName",lastName.getText().toString());
-                map.put("time",time.toString());
+                map.put("birthDate",time.getYear() + time.getMonth() + time.getDayOfMonth());
 
                 documentReference.set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
