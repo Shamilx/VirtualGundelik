@@ -64,8 +64,8 @@ public class RegisterActivity extends AppCompatActivity {
                 finish();
             }else{
                 new MaterialAlertDialogBuilder(RegisterActivity.this)
-                        .setTitle("Error")
-                        .setMessage("Something went wrong,please try again later,or contact to Developers.")
+                        .setTitle(getString(R.string.java4))
+                        .setMessage(getString(R.string.java5))
                         .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
             }
         }));
@@ -78,17 +78,17 @@ public class RegisterActivity extends AppCompatActivity {
         boolean thereIsError = false;
 
         if (TextUtils.isEmpty(EmailEditText.getText().toString())) {
-            EmailEditText.setError("Please fill that field!");
+            EmailEditText.setError(getString(R.string.java6));
             thereIsError = true;
         }
 
         if (TextUtils.isEmpty(PasswordEditText.getText().toString())) {
-            PasswordEditText.setError("Please fill that field!");
+            PasswordEditText.setError(getString(R.string.java6));
             thereIsError = true;
         }
 
         if (TextUtils.isEmpty(PasswordRepeatEditText.getText().toString())) {
-            PasswordRepeatEditText.setError("Please fill that field!");
+            PasswordRepeatEditText.setError(getString(R.string.java6));
             thereIsError = true;
         }
 
@@ -116,15 +116,15 @@ public class RegisterActivity extends AppCompatActivity {
                 String txt_password_repeat = PasswordRepeatEditText.getText().toString();
 
                 if (checkForEmptyInputAndWarnUser()) {
-                    Toast.makeText(RegisterActivity.this, "Please fill the inputs correctly!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterActivity.this, getString(R.string.java6), Toast.LENGTH_LONG).show();
                 } else if (!validate(txt_email)) {
-                    EmailEditText.setError("Please use correct Email!");
+                    EmailEditText.setError(getString(R.string.java3));
                 } else if (txt_password.length() < 6) {
-                    PasswordEditText.setError("Please use password with at least 6 symbols!");
+                    PasswordEditText.setError(getString(R.string.java2));
                 } else if (txt_password_repeat.length() < 6) {
-                    PasswordRepeatEditText.setError("Please use password with at least 6 symbols!");
+                    PasswordRepeatEditText.setError(getString(R.string.java2));
                 } else if (!checkPass()) {
-                    PasswordRepeatEditText.setError("Passwords are not same!");
+                    PasswordRepeatEditText.setError(getString(R.string.java7));
                 } else {
                     Auth.fetchSignInMethodsForEmail(txt_email).addOnCompleteListener(task -> {
                         boolean isNewUser = task.getResult().getSignInMethods().isEmpty();
@@ -133,10 +133,11 @@ public class RegisterActivity extends AppCompatActivity {
                             RegisterUser(txt_email, txt_password);
                         } else {
                             new MaterialAlertDialogBuilder(RegisterActivity.this)
-                                    .setTitle("Error")
-                                    .setMessage("The Email that you used to register is already registered, please fix it and try again.")
+                                    .setTitle(getString(R.string.java4))
+                                    .setMessage(getString(R.string.java8))
                                     .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
-                            EmailEditText.setError("This Email already registired!");
+
+                            EmailEditText.setError(getString(R.string.java9));
                         }
 
                     });

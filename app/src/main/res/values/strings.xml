@@ -21,9 +21,9 @@
     <string name="java4">Error</string>
     <string name="java5">Something went wrong,please try again later,or contact to Developers.</string>
     <string name="java6">Please fill that field!</string>
-    <string name="java7">Please fill the inputs correctly!</string>
-    <string name="java8">Please fill the inputs correctly!</string>
-    <string name="java9">Please fill the inputs correctly!</string>
+    <string name="java7">Passwords are not same!</string>
+    <string name="java8">The Email that you used to register is already registered, please fix it and try again.</string>
+    <string name="java9">This Email already registired!</string>
     <string name="java10">Please fill the inputs correctly!</string>
     <string name="java11">Please fill the inputs correctly!</string>
     <string name="java12">Please fill the inputs correctly!</string>
