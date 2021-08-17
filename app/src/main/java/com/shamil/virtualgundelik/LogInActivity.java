@@ -128,6 +128,7 @@ public class LogInActivity extends AppCompatActivity {
     public void Register_OnClick(View view) {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
+        finish();
     }
 
 

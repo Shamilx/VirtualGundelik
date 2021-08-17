@@ -45,7 +45,6 @@ public class GetInfoActivity extends AppCompatActivity {
         MaterialButton button = findViewById(R.id.SaveMaterialButton);
         firestore = FirebaseFirestore.getInstance();
 
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,7 +60,6 @@ public class GetInfoActivity extends AppCompatActivity {
                 }
 
                 DocumentReference documentReference = firestore.collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
-
                 Map<String,Object> map = new HashMap<String,Object>();
 
                 map.put("firstName",firstName.getText().toString());
