@@ -71,7 +71,7 @@ public class GetInfoActivity extends AppCompatActivity {
 
                 map.put("firstName",firstName.getText().toString());
                 map.put("lastName",lastName.getText().toString());
-                map.put("birthDate",time.getYear() + time.getMonth() + time.getDayOfMonth());
+                map.put("birthDate",time.toString());
 
                 documentReference.set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
