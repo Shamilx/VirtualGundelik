@@ -20,11 +20,9 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.type.DateTime;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,9 +44,9 @@ public class GetInfoActivity extends AppCompatActivity {
         EditText firstName = findViewById(R.id.registerUserNameEditText);
         EditText lastName = findViewById(R.id.registerUserLastnameEditText);
         DatePicker time = findViewById(R.id.registerDatePicker);
+
         MaterialButton button = findViewById(R.id.SaveMaterialButton);
         firestore = FirebaseFirestore.getInstance();
-        time.setMaxDate(new Date().getTime());
 
 
         button.setOnClickListener(new View.OnClickListener() {
