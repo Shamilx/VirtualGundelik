@@ -23,12 +23,14 @@ import com.google.type.DateTime;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class GetInfoActivity extends AppCompatActivity {
-    private  Button button;
-    private FirebaseFirestore firestore;
+
+    Button button;
+    FirebaseFirestore firestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +39,17 @@ public class GetInfoActivity extends AppCompatActivity {
 
         init();
     }
-    private void init() {
+
+    private void init()
+    {
         EditText firstName = findViewById(R.id.registerUserNameEditText);
         EditText lastName = findViewById(R.id.registerUserLastnameEditText);
         DatePicker time = findViewById(R.id.registerDatePicker);
 
         MaterialButton button = findViewById(R.id.SaveMaterialButton);
         firestore = FirebaseFirestore.getInstance();
+        time.setMaxDate(new Date().getTime());
+
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,11 +66,12 @@ public class GetInfoActivity extends AppCompatActivity {
                 }
 
                 DocumentReference documentReference = firestore.collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
                 Map<String,Object> map = new HashMap<String,Object>();
 
                 map.put("firstName",firstName.getText().toString());
                 map.put("lastName",lastName.getText().toString());
-                map.put("birthDate",time.toString());
+                map.put("birthDate",toStringTime(time.getDayOfMonth(), time.getMonth(), time.getYear()));
 
                 documentReference.set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -78,5 +85,10 @@ public class GetInfoActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    private String toStringTime(int day, int month, int year)
+    {
+        return new String (day + ":" + month + ":" + year);
     }
 }

@@ -98,10 +98,7 @@ public class LogInActivity extends AppCompatActivity {
                                     }
                                 });
                             } else {
-                                new MaterialAlertDialogBuilder(LogInActivity.this)
-                                        .setTitle("Error")
-                                        .setMessage("Something went wrong,please try again later,or contact to Developers.")
-                                        .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
+                                PasswordEditText.setError("Password no corrrect");
                             }
                         }
                     });
