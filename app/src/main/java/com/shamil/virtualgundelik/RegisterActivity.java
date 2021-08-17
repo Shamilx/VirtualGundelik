@@ -62,7 +62,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 startActivity(new Intent(RegisterActivity.this,VerifyEmailActivity.class));
                 finish();
-            }else{
+            } else {
                 new MaterialAlertDialogBuilder(RegisterActivity.this)
                         .setTitle(getString(R.string.java4))
                         .setMessage(getString(R.string.java5))

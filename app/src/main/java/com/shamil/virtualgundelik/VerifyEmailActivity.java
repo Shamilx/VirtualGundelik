@@ -41,7 +41,7 @@ public class VerifyEmailActivity extends AppCompatActivity {
         }
 
         this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.java10), Toast.LENGTH_SHORT).show();
 
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
 
@@ -63,8 +63,8 @@ public class VerifyEmailActivity extends AppCompatActivity {
                     button.setClickable(true);
                 } else {
                     new MaterialAlertDialogBuilder(VerifyEmailActivity.this)
-                            .setTitle("Error")
-                            .setMessage("Something went wrong,please try again later,or contact to Developers.")
+                            .setTitle(getString(R.string.java4))
+                            .setMessage(getString(R.string.java5))
                             .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
                 }
             }
@@ -73,8 +73,6 @@ public class VerifyEmailActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                
                 if(CheckIfEmailVerified()) {
                     TextView textView = findViewById(R.id.textView);
                     textView.setVisibility(TextView.INVISIBLE);
@@ -86,9 +84,9 @@ public class VerifyEmailActivity extends AppCompatActivity {
                     finish();
                 } else {
                     new MaterialAlertDialogBuilder(VerifyEmailActivity.this)
-                            .setTitle("You are not Verified!")
-                            .setMessage("We have detected that you are not verified try again!")
-                            .setPositiveButton("Try Again", (dialogInterface, i) ->{  dialogInterface.dismiss(); button.performClick();}).show();
+                            .setTitle(getString(R.string.java11))
+                            .setMessage(getString(R.string.java12))
+                            .setPositiveButton(getString(R.string.java13), (dialogInterface, i) ->{  dialogInterface.dismiss(); button.performClick();}).show();
                 }
             }
         });

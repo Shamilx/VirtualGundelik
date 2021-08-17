@@ -56,12 +56,12 @@ public class GetInfoActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(TextUtils.isEmpty(firstName.getText().toString())) {
-                    firstName.setError("Fill here!");
+                    firstName.setError(getString(R.string.java6));
                     return;
                 }
 
                 if(TextUtils.isEmpty(lastName.getText().toString())) {
-                    lastName.setError("Fill here!");
+                    lastName.setError(getString(R.string.java6));
                     return;
                 }
 

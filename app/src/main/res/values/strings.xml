@@ -24,7 +24,8 @@
     <string name="java7">Passwords are not same!</string>
     <string name="java8">The Email that you used to register is already registered, please fix it and try again.</string>
     <string name="java9">This Email already registired!</string>
-    <string name="java10">Please fill the inputs correctly!</string>
-    <string name="java11">Please fill the inputs correctly!</string>
-    <string name="java12">Please fill the inputs correctly!</string>
+    <string name="java10">Please click BACK again to exit</string>
+    <string name="java11">You are not Verified!</string>
+    <string name="java12">We have detected that you are not verified,try again!</string>
+    <string name="java13">Try Again</string>
 </resources>
