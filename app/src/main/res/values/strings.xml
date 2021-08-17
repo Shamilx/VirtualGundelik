@@ -15,4 +15,16 @@
     <string name="edit_text_hint4">Last Name</string>
     <string name="day_of_birth">Enter your date of birth</string>
     <string name="save">Save</string>
+    <string name="java1">Please fill the inputs correctly!</string>
+    <string name="java2">Please use password with at least 6 symbols!</string>
+    <string name="java3">Please use correct Email!</string>
+    <string name="java4">Error</string>
+    <string name="java5">Something went wrong,please try again later,or contact to Developers.</string>
+    <string name="java6">Please fill that field!</string>
+    <string name="java7">Please fill the inputs correctly!</string>
+    <string name="java8">Please fill the inputs correctly!</string>
+    <string name="java9">Please fill the inputs correctly!</string>
+    <string name="java10">Please fill the inputs correctly!</string>
+    <string name="java11">Please fill the inputs correctly!</string>
+    <string name="java12">Please fill the inputs correctly!</string>
 </resources>

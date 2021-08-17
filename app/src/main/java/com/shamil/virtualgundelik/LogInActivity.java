@@ -57,11 +57,11 @@ public class LogInActivity extends AppCompatActivity {
                 String txt_password = PasswordEditText.getText().toString();
 
                 if (checkForEmptyInputAndWarnUser()) {
-                    Toast.makeText(LogInActivity.this, "Please fill the inputs correctly!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LogInActivity.this, getString(R.string.java1), Toast.LENGTH_LONG).show();
                 } else if (txt_password.length() < 6) {
-                    PasswordEditText.setError("Please use password with at least 6 symbols!");
+                    PasswordEditText.setError(getString(R.string.java2));
                 } else if (!validate(txt_email)) {
-                    EmailEditText.setError("Please use correct Email!");
+                    EmailEditText.setError(getString(R.string.java3));
                 }else {
                     Auth.signInWithEmailAndPassword(txt_email,txt_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -91,14 +91,17 @@ public class LogInActivity extends AppCompatActivity {
                                             }
                                         } else {
                                             new MaterialAlertDialogBuilder(LogInActivity.this)
-                                                    .setTitle("Error")
-                                                    .setMessage("Something went wrong,please try again later,or contact to Developers.")
+                                                    .setTitle(getString(R.string.java4))
+                                                    .setMessage(getString(R.string.java5))
                                                     .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
                                         }
                                     }
                                 });
                             } else {
-                                PasswordEditText.setError("Password no corrrect");
+                                new MaterialAlertDialogBuilder(LogInActivity.this)
+                                        .setTitle(getString(R.string.java4))
+                                        .setMessage(getString(R.string.java5))
+                                        .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
                             }
                         }
                     });
@@ -111,12 +114,12 @@ public class LogInActivity extends AppCompatActivity {
         boolean thereIsError = false;
 
         if (TextUtils.isEmpty(EmailEditText.getText().toString())) {
-            EmailEditText.setError("Please fill that field!");
+            EmailEditText.setError(getString(R.string.java6));
             thereIsError = true;
         }
 
         if (TextUtils.isEmpty(PasswordEditText.getText().toString())) {
-            PasswordEditText.setError("Please fill that field!");
+            PasswordEditText.setError(getString(R.string.java6));
             thereIsError = true;
         }
 

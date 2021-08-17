@@ -16,5 +16,16 @@
     <string name="edit_text_hint4">Soyad</string>
     <string name="day_of_birth">Doğum tarixinizi daxil edin.</string>
     <string name="save">Yadda saxla</string>
-
+    <string name="java1">Please fill the inputs correctly!</string>
+    <string name="java2">Please fill the inputs correctly!</string>
+    <string name="java3">Please fill the inputs correctly!</string>
+    <string name="java4">Please fill the inputs correctly!</string>
+    <string name="java5">Please fill the inputs correctly!</string>
+    <string name="java6">Please fill the inputs correctly!</string>
+    <string name="java7">Please fill the inputs correctly!</string>
+    <string name="java8">Please fill the inputs correctly!</string>
+    <string name="java9">Please fill the inputs correctly!</string>
+    <string name="java10">Please fill the inputs correctly!</string>
+    <string name="java11">Please fill the inputs correctly!</string>
+    <string name="java12">Please fill the inputs correctly!</string>
 </resources>
