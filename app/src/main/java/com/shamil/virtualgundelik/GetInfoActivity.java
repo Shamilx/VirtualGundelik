@@ -3,6 +3,7 @@ package com.shamil.virtualgundelik;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -43,8 +44,8 @@ public class GetInfoActivity extends AppCompatActivity {
         EditText firstName = findViewById(R.id.registerUserNameEditText);
         EditText lastName = findViewById(R.id.registerUserLastnameEditText);
         DatePicker time = findViewById(R.id.registerDatePicker);
+
         MaterialButton button = findViewById(R.id.SaveMaterialButton);
-        Calendar cal = Calendar.getInstance();
         firestore = FirebaseFirestore.getInstance();
 
 
