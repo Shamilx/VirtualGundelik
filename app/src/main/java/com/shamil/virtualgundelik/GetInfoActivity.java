@@ -27,9 +27,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GetInfoActivity extends AppCompatActivity {
-
-    Button button;
-    FirebaseFirestore firestore;
+    private  Button button;
+    private FirebaseFirestore firestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +37,7 @@ public class GetInfoActivity extends AppCompatActivity {
 
         init();
     }
-
-    private void init()
-    {
+    private void init() {
         EditText firstName = findViewById(R.id.registerUserNameEditText);
         EditText lastName = findViewById(R.id.registerUserLastnameEditText);
         DatePicker time = findViewById(R.id.registerDatePicker);
