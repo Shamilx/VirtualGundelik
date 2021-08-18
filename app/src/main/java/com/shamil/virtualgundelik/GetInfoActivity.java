@@ -20,6 +20,8 @@ import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.ktx.Firebase;
 import com.google.type.DateTime;
 
 import java.time.LocalDateTime;
@@ -33,7 +35,7 @@ import java.util.Map;
 public class GetInfoActivity extends AppCompatActivity {
 
     Button button;
-    FirebaseFirestore firestore;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +50,10 @@ public class GetInfoActivity extends AppCompatActivity {
         EditText firstName = findViewById(R.id.registerUserNameEditText);
         EditText lastName = findViewById(R.id.registerUserLastnameEditText);
         DatePicker time = findViewById(R.id.registerDatePicker);
-
         MaterialButton button = findViewById(R.id.SaveMaterialButton);
-        firestore = FirebaseFirestore.getInstance();
         time.setMaxDate(new Date().getTime());
 
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,10 +68,19 @@ public class GetInfoActivity extends AppCompatActivity {
                     lastName.setError(getString(R.string.java6));
                     return;
                 }
+                Map<String,Object> map = new HashMap<String,Object>();
 
                 DocumentReference documentReference = firestore.collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
-
-                Map<String,Object> map = new HashMap<String,Object>();
+               firestore.collection("Users")
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    map.put("id", task.getResult().size() + 100000);
+                                }
+                            }
+                        });
 
                 map.put("firstName",firstName.getText().toString());
                 map.put("lastName",lastName.getText().toString());
