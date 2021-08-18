@@ -13,5 +13,6 @@
         android:icon="@drawable/ic_baseline_article_24"/>
     <item
         android:title="Profile"
+        android:onClick="Profile_OnClick"
         android:icon="@drawable/ic_baseline_person_24dp"/>
 </menu>
