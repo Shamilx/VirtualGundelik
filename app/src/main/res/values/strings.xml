@@ -33,4 +33,6 @@
     <string name="menu_tasks">Tasks</string>
     <string name="menu_search">Search</string>
     <string name="menu_groups">Groups</string>
+    <string name="account_settings">Account Settings</string>
+    <string name="profile_info">Information</string>
 </resources>

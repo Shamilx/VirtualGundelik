@@ -34,4 +34,6 @@
     <string name="menu_tasks">Tapşırıqlar</string>
     <string name="menu_search">Axtar</string>
     <string name="menu_groups">Qruplar</string>
+    <string name="account_settings">Hesab ayarları</string>
+    <string name="profile_info">Məlumat</string>
 </resources>
