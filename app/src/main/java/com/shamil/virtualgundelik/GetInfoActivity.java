@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ import java.util.Map;
 public class GetInfoActivity extends AppCompatActivity {
 
     Button button;
+    ProgressBar progressBar;
 
 
     @Override
@@ -51,6 +53,7 @@ public class GetInfoActivity extends AppCompatActivity {
         EditText lastName = findViewById(R.id.registerUserLastnameEditText);
         DatePicker time = findViewById(R.id.registerDatePicker);
         MaterialButton button = findViewById(R.id.SaveMaterialButton);
+        progressBar = findViewById(R.id.progress_circular);
         time.setMaxDate(new Date().getTime());
 
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
@@ -59,12 +62,15 @@ public class GetInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                progressBar.setVisibility(ProgressBar.VISIBLE);
                 if (TextUtils.isEmpty(firstName.getText().toString())) {
+                    progressBar.setVisibility(ProgressBar.INVISIBLE);
                     firstName.setError(getString(R.string.java6));
                     return;
                 }
 
                 if (TextUtils.isEmpty(lastName.getText().toString())) {
+                    progressBar.setVisibility(ProgressBar.INVISIBLE);
                     lastName.setError(getString(R.string.java6));
                     return;
                 }
@@ -90,6 +96,7 @@ public class GetInfoActivity extends AppCompatActivity {
                                                 startActivity(intent);
                                                 finish();
                                             } else {
+                                                progressBar.setVisibility(ProgressBar.INVISIBLE);
                                                 Toast.makeText(GetInfoActivity.this, "No WORKS", Toast.LENGTH_LONG).show();
                                             }
                                         }

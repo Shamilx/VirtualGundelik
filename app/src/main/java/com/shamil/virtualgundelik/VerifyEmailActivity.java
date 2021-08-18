@@ -24,6 +24,7 @@ public class VerifyEmailActivity extends AppCompatActivity {
     private boolean doubleBackToExitPressedOnce = false;
     private FirebaseAuth Auth;
     private MaterialButton button;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,7 @@ public class VerifyEmailActivity extends AppCompatActivity {
     private void init() {
         Auth = FirebaseAuth.getInstance();
         button = findViewById(R.id.VerifyButton);
+        progressBar = findViewById(R.id.progress_circular);
 
         Auth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -73,16 +75,12 @@ public class VerifyEmailActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressBar.setVisibility(ProgressBar.VISIBLE);
                 if(CheckIfEmailVerified()) {
-                    TextView textView = findViewById(R.id.textView);
-                    textView.setVisibility(TextView.INVISIBLE);
-                    ProgressBar progressBar = findViewById(R.id.progress_circular);
-                    progressBar.setVisibility(ProgressBar.VISIBLE);
-                    button.setVisibility(Button.INVISIBLE);
-
                     startActivity(new Intent(VerifyEmailActivity.this,GetInfoActivity.class));
                     finish();
                 } else {
+                    progressBar.setVisibility(ProgressBar.INVISIBLE);
                     new MaterialAlertDialogBuilder(VerifyEmailActivity.this)
                             .setTitle(getString(R.string.java11))
                             .setMessage(getString(R.string.java12))

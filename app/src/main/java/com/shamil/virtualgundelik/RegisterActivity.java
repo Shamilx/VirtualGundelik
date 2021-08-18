@@ -30,6 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
     private TextInputEditText PasswordEditText;
     private TextInputEditText EmailEditText;
     private MaterialButton registerMatieralButton;
+    private ProgressBar progressBar;
     private FirebaseAuth Auth;
 
     @Override
@@ -49,20 +50,10 @@ public class RegisterActivity extends AppCompatActivity {
     private void RegisterUser(String email, String password) {
         Auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener((task -> {
             if (task.isSuccessful()){
-                TextInputLayout textInputLayout1 = findViewById(R.id.outlinedTextField);
-                TextInputLayout textInputLayout2 = findViewById(R.id.outlinedTextField2);
-                TextInputLayout textInputLayout3 = findViewById(R.id.outlinedTextField3);
-                ProgressBar progressBar = findViewById(R.id.progress_circular);
-
-                textInputLayout1.setVisibility(TextInputLayout.INVISIBLE);
-                textInputLayout2.setVisibility(TextInputLayout.INVISIBLE);
-                textInputLayout3.setVisibility(TextInputLayout.INVISIBLE);
-                registerMatieralButton.setVisibility(MaterialButton.INVISIBLE);
-                progressBar.setVisibility(ProgressBar.VISIBLE);
-
                 startActivity(new Intent(RegisterActivity.this,VerifyEmailActivity.class));
                 finish();
             } else {
+                progressBar.setVisibility(ProgressBar.INVISIBLE);
                 new MaterialAlertDialogBuilder(RegisterActivity.this)
                         .setTitle(getString(R.string.java4))
                         .setMessage(getString(R.string.java5))
@@ -106,24 +97,38 @@ public class RegisterActivity extends AppCompatActivity {
         PasswordEditText = findViewById(R.id.registerPasswordInput);
         PasswordRepeatEditText = findViewById(R.id.registerPasswordInputRepeat);
         registerMatieralButton = findViewById(R.id.materialButton);
+        progressBar = findViewById(R.id.progress_circular);
         Auth = FirebaseAuth.getInstance();
 
         registerMatieralButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressBar.setVisibility(ProgressBar.VISIBLE);
+                registerMatieralButton.setVisibility(MaterialButton.INVISIBLE);
+
                 String txt_email = EmailEditText.getText().toString();
                 String txt_password = PasswordEditText.getText().toString();
                 String txt_password_repeat = PasswordRepeatEditText.getText().toString();
 
                 if (checkForEmptyInputAndWarnUser()) {
+                    registerMatieralButton.setVisibility(MaterialButton.INVISIBLE);
+                    progressBar.setVisibility(ProgressBar.INVISIBLE);
                     Toast.makeText(RegisterActivity.this, getString(R.string.java6), Toast.LENGTH_LONG).show();
                 } else if (!validate(txt_email)) {
+                    registerMatieralButton.setVisibility(MaterialButton.INVISIBLE);
+                    progressBar.setVisibility(ProgressBar.INVISIBLE);
                     EmailEditText.setError(getString(R.string.java3));
                 } else if (txt_password.length() < 6) {
+                    registerMatieralButton.setVisibility(MaterialButton.INVISIBLE);
+                    progressBar.setVisibility(ProgressBar.INVISIBLE);
                     PasswordEditText.setError(getString(R.string.java2));
                 } else if (txt_password_repeat.length() < 6) {
+                    registerMatieralButton.setVisibility(MaterialButton.INVISIBLE);
+                    progressBar.setVisibility(ProgressBar.INVISIBLE);
                     PasswordRepeatEditText.setError(getString(R.string.java2));
                 } else if (!checkPass()) {
+                    registerMatieralButton.setVisibility(MaterialButton.INVISIBLE);
+                    progressBar.setVisibility(ProgressBar.INVISIBLE);
                     PasswordRepeatEditText.setError(getString(R.string.java7));
                 } else {
                     Auth.fetchSignInMethodsForEmail(txt_email).addOnCompleteListener(task -> {
@@ -132,6 +137,8 @@ public class RegisterActivity extends AppCompatActivity {
                         if (isNewUser) {
                             RegisterUser(txt_email, txt_password);
                         } else {
+                            registerMatieralButton.setVisibility(MaterialButton.INVISIBLE);
+                            progressBar.setVisibility(ProgressBar.INVISIBLE);
                             new MaterialAlertDialogBuilder(RegisterActivity.this)
                                     .setTitle(getString(R.string.java4))
                                     .setMessage(getString(R.string.java8))

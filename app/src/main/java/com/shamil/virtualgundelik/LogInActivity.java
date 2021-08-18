@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,6 +30,8 @@ public class LogInActivity extends AppCompatActivity {
     private TextInputEditText EmailEditText;
     private TextInputEditText PasswordEditText;
     private MaterialButton MaterialButton;
+    private TextView openRegister;
+    private ProgressBar progressBar;
     private FirebaseAuth Auth;
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
@@ -48,7 +51,8 @@ public class LogInActivity extends AppCompatActivity {
         EmailEditText = findViewById(R.id.LoginEmailEditText);
         PasswordEditText = findViewById(R.id.LogInPasswordEditText);
         MaterialButton = findViewById(R.id.LogInMaterialButton);
-        ProgressBar progressBar = findViewById(R.id.progress_circular);
+        progressBar = findViewById(R.id.progress_circular);
+        openRegister = findViewById(R.id.OpenRegister);
         Auth = FirebaseAuth.getInstance();
 
 
@@ -59,13 +63,23 @@ public class LogInActivity extends AppCompatActivity {
                 String txt_password = PasswordEditText.getText().toString();
 
                 progressBar.setVisibility(ProgressBar.VISIBLE);
+                MaterialButton.setVisibility(com.google.android.material.button.MaterialButton.INVISIBLE);
+                openRegister.setVisibility(TextView.INVISIBLE);
 
                 if (checkForEmptyInputAndWarnUser()) {
+                    openRegister.setVisibility(TextView.VISIBLE);
+                    MaterialButton.setVisibility(com.google.android.material.button.MaterialButton.VISIBLE);
                     progressBar.setVisibility(ProgressBar.INVISIBLE);
                     Toast.makeText(LogInActivity.this, getString(R.string.java1), Toast.LENGTH_LONG).show();
                 } else if (txt_password.length() < 6) {
+                    openRegister.setVisibility(TextView.VISIBLE);
+                    MaterialButton.setVisibility(com.google.android.material.button.MaterialButton.VISIBLE);
+                    progressBar.setVisibility(ProgressBar.INVISIBLE);
                     PasswordEditText.setError(getString(R.string.java2));
                 } else if (!validate(txt_email)) {
+                    openRegister.setVisibility(TextView.VISIBLE);
+                    MaterialButton.setVisibility(com.google.android.material.button.MaterialButton.VISIBLE);
+                    progressBar.setVisibility(ProgressBar.INVISIBLE);
                     EmailEditText.setError(getString(R.string.java3));
                 }else {
                     Auth.signInWithEmailAndPassword(txt_email,txt_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -98,6 +112,9 @@ public class LogInActivity extends AppCompatActivity {
                                                 finish();
                                             }
                                         } else {
+                                            openRegister.setVisibility(TextView.VISIBLE);
+                                            MaterialButton.setVisibility(com.google.android.material.button.MaterialButton.VISIBLE);
+                                            progressBar.setVisibility(ProgressBar.INVISIBLE);
                                             new MaterialAlertDialogBuilder(LogInActivity.this)
                                                     .setTitle(getString(R.string.java4))
                                                     .setMessage(getString(R.string.java5))
@@ -106,6 +123,9 @@ public class LogInActivity extends AppCompatActivity {
                                     }
                                 });
                             } else {
+                                openRegister.setVisibility(TextView.VISIBLE);
+                                MaterialButton.setVisibility(com.google.android.material.button.MaterialButton.VISIBLE);
+                                progressBar.setVisibility(ProgressBar.INVISIBLE);
                                 PasswordEditText.setError(getString(R.string.java14));
                             }
                         }
