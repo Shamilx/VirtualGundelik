@@ -109,7 +109,6 @@ public class LogInActivity extends AppCompatActivity {
                                         if (task.isSuccessful()) {
                                             DocumentSnapshot document = task.getResult();
                                             if (document.exists()) {
-                                                // TODO: FILL HERE
                                                 Intent intent = new Intent(LogInActivity.this,MainActivity.class);
                                                 startActivity(intent);
                                                 finish();
