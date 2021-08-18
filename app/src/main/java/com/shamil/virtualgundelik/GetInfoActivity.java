@@ -19,15 +19,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.ktx.Firebase;
 import com.google.firestore.v1.QueryProto;
 import com.google.type.DateTime;
 
@@ -74,54 +68,35 @@ public class GetInfoActivity extends AppCompatActivity {
                     lastName.setError(getString(R.string.java6));
                     return;
                 }
-                Map<String, Object> map = new HashMap<String, Object>();
 
-                DocumentReference documentReference = firestore.collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
-
-                /*
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("counter");
-                myRef.keepSynced(true);
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        map.put("id", dataSnapshot.getChildrenCount() + 100000);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(GetInfoActivity.this, "Error", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-----------------------
                 Task<QuerySnapshot> dr = firestore.collection("Users")
                         .get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                 if (task.isSuccessful()) {
+                                    DocumentReference documentReference = firestore.collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                    Map<String, Object> map = new HashMap<String, Object>();
                                     map.put("id", task.getResult().size() + 100000);
+                                    map.put("firstName", firstName.getText().toString());
+                                    map.put("lastName", lastName.getText().toString());
+                                    map.put("birthDate", toStringTime(time.getDayOfMonth(), time.getMonth(), time.getYear()));
+
+                                    documentReference.set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Intent intent = new Intent(GetInfoActivity.this, MainActivity.class);
+                                                startActivity(intent);
+                                                finish();
+                                            } else {
+                                                Toast.makeText(GetInfoActivity.this, "No WORKS", Toast.LENGTH_LONG).show();
+                                            }
+                                        }
+                                    });
                                 }
                             }
-                        });*/
-
-                map.put("firstName", firstName.getText().toString());
-                map.put("lastName", lastName.getText().toString());
-                map.put("birthDate", toStringTime(time.getDayOfMonth(), time.getMonth(), time.getYear()));
-
-                documentReference.set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Intent intent = new Intent(GetInfoActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        } else {
-                            Toast.makeText(GetInfoActivity.this, "No WORKS", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
+                        });
             }
         });
     }
