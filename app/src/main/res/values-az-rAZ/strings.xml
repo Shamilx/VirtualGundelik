@@ -23,11 +23,15 @@
     <string name="java5">Zəhmət olmasa biraz sonra yenidən cəhd etin və yaxud Developer-lər ilə əlaqə saxlayın.</string>
     <string name="java6">Zəhmət olmasa buranı doldurun!</string>
     <string name="java7">Şifrələr eyni deyil!</string>
-    <string name="java8">Bu E-poçt ünvanı ilə artıq qeydiyatdan keçilib,zəhmət olmasa log-in ekranına keçin!</string>
+    <string name="java8">Bu E-poçt ünvanı ilə artıq qeydiyatdan keçilib,zəhmət olmasa daxil ol ekranına keçin!</string>
     <string name="java9">Bu E-poçt artıq qeydiyyatdan keçib.</string>
     <string name="java10">Çıxmaq üçün GERİ düyməsinə yenidən basın!</string>
     <string name="java11">Təsdiqlənməmisiniz!</string>
     <string name="java12">Siz hələki təsdiqlənməmisiniz,yenidən yoxlayın!</string>
     <string name="java13">Yenidən yoxla</string>
     <string name="java14">E-poçt və yaxud şifrə yanlışdır!</string>
+    <string name="menu_profile">Profil</string>
+    <string name="menu_tasks">Tapşırıqlar</string>
+    <string name="menu_search">Axtar</string>
+    <string name="menu_groups">Qruplar</string>
 </resources>

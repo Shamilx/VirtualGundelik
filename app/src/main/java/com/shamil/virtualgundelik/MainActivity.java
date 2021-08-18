@@ -12,8 +12,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        init();
     }
 
     public void Profile_OnClick(MenuItem item) {
@@ -21,10 +19,6 @@ public class MainActivity extends AppCompatActivity {
         fr.replace(R.id.flFragment,new ProfileFragment());
         fr.commit();
 
-
-    }
-
-    private void init() {
-
+        item.setChecked(true);
     }
 }

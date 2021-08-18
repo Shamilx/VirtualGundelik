@@ -29,4 +29,8 @@
     <string name="java12">We have detected that you are not verified,try again!</string>
     <string name="java13">Try Again</string>
     <string name="java14">Email or password is wrong!</string>
+    <string name="menu_profile">Profile</string>
+    <string name="menu_tasks">Tasks</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_groups">Groups</string>
 </resources>

@@ -3,25 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2890625" />
-        <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/drawable/cricle.xml" value="0.2890625" />
-        <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/drawable/ic_profile_background.xml" value="0.2890625" />
-        <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/drawable/img.xml" value="0.2890625" />
-        <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/activity_get_info.xml" value="0.25" />
         <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/activity_login.xml" value="0.27291666666666664" />
-        <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/activity_main.xml" value="0.18840579710144928" />
         <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/activity_rgistrer.xml" value="0.19519927536231885" />
         <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/activity_verify_email.xml" value="0.33" />
-        <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
-        <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/mipmap-anydpi-v26/ic_profile.xml" value="0.2890625" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1328125" />
+        <entry key="app/src/main/res/drawable/back.xml" value="0.2546875" />
+        <entry key="app/src/main/res/drawable/ic_baseline_article_24.xml" value="0.22027027027027027" />
+        <entry key="app/src/main/res/drawable/ic_baseline_group_24.xml" value="0.22027027027027027" />
+        <entry key="app/src/main/res/drawable/ic_baseline_verified_user_24.xml" value="0.22027027027027027" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1328125" />
+        <entry key="app/src/main/res/drawable/ic_phone_24dp.xml" value="0.22027027027027027" />
         <entry key="app/src/main/res/layout-v26/activity_verify_email.xml" value="0.23854166666666668" />
         <entry key="app/src/main/res/layout/activity_get_info.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.23854166666666668" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_verify_email.xml" value="0.23854166666666668" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.23854166666666668" />
+        <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.23854166666666668" />
       </map>
     </option>
   </component>
