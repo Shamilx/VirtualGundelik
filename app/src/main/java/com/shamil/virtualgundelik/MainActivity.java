@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     public void Profile_OnClick(MenuItem item) {
         FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
         fr.replace(R.id.flFragment,new ProfileFragment());
-        fr.commit();
+
+        item.setChecked(true);
     }
 }
