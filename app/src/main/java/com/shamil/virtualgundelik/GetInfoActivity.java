@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -79,7 +80,9 @@ public class GetInfoActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()) {
-                            Toast.makeText(GetInfoActivity.this,"WORKS",Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(GetInfoActivity.this,MainActivity.class);
+                            startActivity(intent);
+                            finish();
                         } else {
                             Toast.makeText(GetInfoActivity.this,"No WORKS",Toast.LENGTH_LONG).show();
                         }
