@@ -12,9 +12,12 @@
         <entry key="app/src/main/res/drawable/back.xml" value="0.2546875" />
         <entry key="app/src/main/res/drawable/ic_baseline_article_24.xml" value="0.22027027027027027" />
         <entry key="app/src/main/res/drawable/ic_baseline_group_24.xml" value="0.22027027027027027" />
+        <entry key="app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.2546875" />
         <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.2546875" />
+        <entry key="app/src/main/res/drawable/ic_baseline_person_24dp.xml" value="0.2546875" />
         <entry key="app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.2546875" />
         <entry key="app/src/main/res/drawable/ic_baseline_verified_user_24.xml" value="0.22027027027027027" />
+        <entry key="app/src/main/res/drawable/ic_day_of_birth_24dp.xml" value="0.2546875" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1328125" />
         <entry key="app/src/main/res/drawable/ic_phone_24dp.xml" value="0.22027027027027027" />
         <entry key="app/src/main/res/drawable/ic_wave_1_.xml" value="0.22027027027027027" />
@@ -25,7 +28,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_verify_email.xml" value="0.23854166666666668" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.23854166666666668" />
       </map>
     </option>

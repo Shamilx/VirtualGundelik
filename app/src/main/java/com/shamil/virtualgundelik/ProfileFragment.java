@@ -2,11 +2,23 @@ package com.shamil.virtualgundelik;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,6 +65,54 @@ public class ProfileFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        TextView userId = getView().findViewById(R.id.user_id);
+        TextView userName = getView().findViewById(R.id.user_name);
+        MaterialButton button1 = getView().findViewById(R.id.profileMaterialButton1);
+        MaterialButton button2 = getView().findViewById(R.id.profileMaterialButton2);
+        MaterialButton button3 = getView().findViewById(R.id.profileMaterialButton3);
+        FirebaseAuth auth =  FirebaseAuth.getInstance();
+        DocumentReference ref = FirebaseFirestore.getInstance().collection("Users").document(auth.getCurrentUser().getUid());
+
+        ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    DocumentSnapshot snap = task.getResult();
+                    if(snap.exists()) {
+                        userId.setText("@" + snap.get("id").toString());
+                        userName.setText(snap.get("firstName").toString());
+                    }
+                } else {
+                    new MaterialAlertDialogBuilder(getActivity())
+                            .setTitle(getString(R.string.java4))
+                            .setMessage(getString(R.string.java5))
+                            .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
+                }
+            }
+        });
+
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                getActivity().setContentView(R.layout.activity_login);
+            }
+        });
     }
 
     @Override

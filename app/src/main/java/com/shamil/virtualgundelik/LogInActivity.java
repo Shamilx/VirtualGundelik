@@ -39,6 +39,13 @@ public class LogInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        if(FirebaseAuth.getInstance().getCurrentUser() != null) {
+            Intent intent = new Intent(LogInActivity.this,MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
         init();
     }
 

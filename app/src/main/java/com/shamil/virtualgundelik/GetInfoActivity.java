@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -97,7 +98,10 @@ public class GetInfoActivity extends AppCompatActivity {
                                                 finish();
                                             } else {
                                                 progressBar.setVisibility(ProgressBar.INVISIBLE);
-                                                Toast.makeText(GetInfoActivity.this, "No WORKS", Toast.LENGTH_LONG).show();
+                                                new MaterialAlertDialogBuilder(GetInfoActivity.this)
+                                                        .setTitle(getString(R.string.java4))
+                                                        .setMessage(getString(R.string.java5))
+                                                        .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
                                             }
                                         }
                                     });

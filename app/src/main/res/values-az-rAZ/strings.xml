@@ -36,4 +36,6 @@
     <string name="menu_groups">Qruplar</string>
     <string name="account_settings">Hesab ayarları</string>
     <string name="profile_info">Məlumat</string>
+    <string name="profile_loading">Yüklənir…</string>
+    <string name="profile_log_out">Hesabdan çıx</string>
 </resources>
