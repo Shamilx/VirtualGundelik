@@ -7,6 +7,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -18,10 +19,16 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.ktx.Firebase;
+import com.google.firestore.v1.QueryProto;
 import com.google.type.DateTime;
 
 import java.time.LocalDateTime;
@@ -45,8 +52,7 @@ public class GetInfoActivity extends AppCompatActivity {
         init();
     }
 
-    private void init()
-    {
+    private void init() {
         EditText firstName = findViewById(R.id.registerUserNameEditText);
         EditText lastName = findViewById(R.id.registerUserLastnameEditText);
         DatePicker time = findViewById(R.id.registerDatePicker);
@@ -59,19 +65,37 @@ public class GetInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(TextUtils.isEmpty(firstName.getText().toString())) {
+                if (TextUtils.isEmpty(firstName.getText().toString())) {
                     firstName.setError(getString(R.string.java6));
                     return;
                 }
 
-                if(TextUtils.isEmpty(lastName.getText().toString())) {
+                if (TextUtils.isEmpty(lastName.getText().toString())) {
                     lastName.setError(getString(R.string.java6));
                     return;
                 }
-                Map<String,Object> map = new HashMap<String,Object>();
+                Map<String, Object> map = new HashMap<String, Object>();
 
                 DocumentReference documentReference = firestore.collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
-               firestore.collection("Users")
+
+                /*
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("counter");
+                myRef.keepSynced(true);
+                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        map.put("id", dataSnapshot.getChildrenCount() + 100000);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(GetInfoActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+----------------------
+                Task<QuerySnapshot> dr = firestore.collection("Users")
                         .get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
@@ -80,21 +104,21 @@ public class GetInfoActivity extends AppCompatActivity {
                                     map.put("id", task.getResult().size() + 100000);
                                 }
                             }
-                        });
+                        });*/
 
-                map.put("firstName",firstName.getText().toString());
-                map.put("lastName",lastName.getText().toString());
-                map.put("birthDate",toStringTime(time.getDayOfMonth(), time.getMonth(), time.getYear()));
+                map.put("firstName", firstName.getText().toString());
+                map.put("lastName", lastName.getText().toString());
+                map.put("birthDate", toStringTime(time.getDayOfMonth(), time.getMonth(), time.getYear()));
 
                 documentReference.set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()) {
-                            Intent intent = new Intent(GetInfoActivity.this,MainActivity.class);
+                        if (task.isSuccessful()) {
+                            Intent intent = new Intent(GetInfoActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish();
                         } else {
-                            Toast.makeText(GetInfoActivity.this,"No WORKS",Toast.LENGTH_LONG).show();
+                            Toast.makeText(GetInfoActivity.this, "No WORKS", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -102,8 +126,7 @@ public class GetInfoActivity extends AppCompatActivity {
         });
     }
 
-    private String toStringTime(int day, int month, int year)
-    {
-        return new String (day + ":" + month + ":" + year);
+    private String toStringTime(int day, int month, int year) {
+        return new String(day + ":" + month + ":" + year);
     }
 }

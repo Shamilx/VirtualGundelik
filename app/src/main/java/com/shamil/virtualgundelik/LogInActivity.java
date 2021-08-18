@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -47,6 +48,7 @@ public class LogInActivity extends AppCompatActivity {
         EmailEditText = findViewById(R.id.LoginEmailEditText);
         PasswordEditText = findViewById(R.id.LogInPasswordEditText);
         MaterialButton = findViewById(R.id.LogInMaterialButton);
+        ProgressBar progressBar = findViewById(R.id.progress_circular);
         Auth = FirebaseAuth.getInstance();
 
 
@@ -56,7 +58,10 @@ public class LogInActivity extends AppCompatActivity {
                 String txt_email = EmailEditText.getText().toString();
                 String txt_password = PasswordEditText.getText().toString();
 
+                progressBar.setVisibility(ProgressBar.VISIBLE);
+
                 if (checkForEmptyInputAndWarnUser()) {
+                    progressBar.setVisibility(ProgressBar.INVISIBLE);
                     Toast.makeText(LogInActivity.this, getString(R.string.java1), Toast.LENGTH_LONG).show();
                 } else if (txt_password.length() < 6) {
                     PasswordEditText.setError(getString(R.string.java2));
