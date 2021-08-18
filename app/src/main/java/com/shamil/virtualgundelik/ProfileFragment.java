@@ -1,5 +1,6 @@
 package com.shamil.virtualgundelik;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -106,7 +107,9 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
-                getActivity().setContentView(R.layout.activity_login);
+                Intent intent = new Intent(getActivity(), LogInActivity.class);
+                startActivity(intent);
+                getActivity().finish();
             }
         });
     }
