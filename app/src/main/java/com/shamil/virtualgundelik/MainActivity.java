@@ -12,12 +12,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        init();
     }
 
     public void Profile_OnClick(MenuItem item) {
         FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
         fr.replace(R.id.flFragment,new ProfileFragment());
+        fr.commit();
 
-        item.setChecked(true);
+
+    }
+
+    private void init() {
+
     }
 }
