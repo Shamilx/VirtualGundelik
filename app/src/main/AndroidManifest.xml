@@ -10,9 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VirtualGundelik">
         <activity
+            android:name=".ProfileSettingsActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".GetInfoActivity"
             android:exported="true"

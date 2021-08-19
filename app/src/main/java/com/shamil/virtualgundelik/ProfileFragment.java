@@ -99,7 +99,8 @@ public class ProfileFragment extends Fragment {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getActivity(),ProfileSettingsActivity.class);
+                startActivity(intent);
             }
         });
 
