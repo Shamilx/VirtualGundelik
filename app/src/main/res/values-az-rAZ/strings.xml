@@ -30,6 +30,7 @@
     <string name="java12">Siz hələki təsdiqlənməmisiniz,yenidən yoxlayın!</string>
     <string name="java13">Yenidən yoxla</string>
     <string name="java14">E-poçt və yaxud şifrə yanlışdır!</string>
+    <string name="java15">Yanlız rəqəmlərdən istifadə edin!</string>
     <string name="menu_profile">Profil</string>
     <string name="menu_tasks">Tapşırıqlar</string>
     <string name="menu_search">Axtar</string>
@@ -38,4 +39,6 @@
     <string name="profile_info">Məlumat</string>
     <string name="profile_loading">Yüklənir…</string>
     <string name="profile_log_out">Hesabdan çıx</string>
+    <string name="search_with_id">İD ilə axtar</string>
+    <string name="search_fragment_search">Axtar</string>
 </resources>

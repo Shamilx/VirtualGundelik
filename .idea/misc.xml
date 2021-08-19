@@ -10,7 +10,9 @@
         <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/activity_verify_email.xml" value="0.33" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1328125" />
         <entry key="app/src/main/res/drawable/back.xml" value="0.2546875" />
+        <entry key="app/src/main/res/drawable/edittext_rounded_corners.xml" value="0.30625" />
         <entry key="app/src/main/res/drawable/ic_baseline_article_24.xml" value="0.22027027027027027" />
+        <entry key="app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.30625" />
         <entry key="app/src/main/res/drawable/ic_baseline_group_24.xml" value="0.22027027027027027" />
         <entry key="app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.2546875" />
         <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.2546875" />
@@ -31,6 +33,7 @@
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_verify_email.xml" value="0.23854166666666668" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.17" />
         <entry key="app/src/main/res/layout/list_view_style.xml" value="0.29010416666666666" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.23854166666666668" />
       </map>
