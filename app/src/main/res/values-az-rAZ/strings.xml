@@ -30,6 +30,8 @@
     <string name="java12">Siz hələki təsdiqlənməmisiniz,yenidən yoxlayın!</string>
     <string name="java13">Yenidən yoxla</string>
     <string name="java14">E-poçt və yaxud şifrə yanlışdır!</string>
+    <string name="java15">E-poçt address-i doğru deyil</string>
+    <string name="java16">Zəhmət olmasa, yeni e -poçt ünvanınıza göndərilən doğrulamanı qəbul edin</string>
     <string name="menu_profile">Profil</string>
     <string name="menu_tasks">Tapşırıqlar</string>
     <string name="menu_search">Axtar</string>
@@ -38,4 +40,18 @@
     <string name="profile_info">Məlumat</string>
     <string name="profile_loading">Yüklənir…</string>
     <string name="profile_log_out">Hesabdan çıx</string>
+    <string name="profile_settings_label">Parametrlər</string>
+    <string name="back_to_profile">Profilə qayıt</string>
+    <string name="profile_changeToolTip1">E-poçt dəyişmək</string>
+    <string name="profile_changeToolTip2">Paroll dəyişmək</string>
+    <string name="profile_changeToolTip3">Ad dəyişmək</string>
+    <string name="profile_changeToolTip4">Soyad dəyişmək</string>
+    <string name="profile_changeToolTip5">E-poçt yoxlamaq</string>
+    <string name="profile_changeToolTip6">Paroll yoxlamaq</string>
+    <string name="profile_changeToolTip7">Ad yoxlamaq</string>
+    <string name="profile_changeToolTip8">Soyad yoxlamaq</string>
+    <string name="profile_changeToolTip9">E-poçt ləğv et</string>
+    <string name="profile_changeToolTip10">Paroll ləğv et</string>
+    <string name="profile_changeToolTip11">Ad ləğv et</string>
+    <string name="profile_changeToolTip12">Soyad ləğv et</string>
 </resources>

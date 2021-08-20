@@ -29,6 +29,8 @@
     <string name="java12">We have detected that you are not verified,try again!</string>
     <string name="java13">Try Again</string>
     <string name="java14">Email or password is wrong!</string>
+    <string name="java15">No correct E-mail address.</string>
+    <string name="java16">Please accept the confirmation sent to your new email address.</string>
     <string name="menu_profile">Profile</string>
     <string name="menu_tasks">Tasks</string>
     <string name="menu_search">Search</string>
@@ -37,4 +39,18 @@
     <string name="profile_info">Information</string>
     <string name="profile_loading">Loading…</string>
     <string name="profile_log_out">Log out</string>
+    <string name="profile_settings_label">Settings</string>
+    <string name="back_to_profile">Back to profile</string>
+    <string name="profile_changeToolTip1">Email change</string>
+    <string name="profile_changeToolTip2">Password change</string>
+    <string name="profile_changeToolTip3">Firstname change</string>
+    <string name="profile_changeToolTip4">Lastname change</string>
+    <string name="profile_changeToolTip5">Email check</string>
+    <string name="profile_changeToolTip6">Password check</string>
+    <string name="profile_changeToolTip7">Firstname check</string>
+    <string name="profile_changeToolTip8">Lastname check</string>
+    <string name="profile_changeToolTip9">Email cancel</string>
+    <string name="profile_changeToolTip10">Password cancel</string>
+    <string name="profile_changeToolTip11">Firstname cancel</string>
+    <string name="profile_changeToolTip12">Lastname cancel</string>
 </resources>
