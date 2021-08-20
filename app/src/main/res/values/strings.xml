@@ -30,8 +30,8 @@
     <string name="java13">Try Again</string>
     <string name="java14">Email or password is wrong!</string>
     <string name="java15">Use only numbers!</string>
-    <string name="java15">No correct E-mail address.</string>
     <string name="java16">Please accept the confirmation sent to your new email address.</string>
+    <string name="java17">Please use at least 6 symbols!</string>
     <string name="menu_profile">Profile</string>
     <string name="menu_tasks">Tasks</string>
     <string name="menu_search">Search</string>

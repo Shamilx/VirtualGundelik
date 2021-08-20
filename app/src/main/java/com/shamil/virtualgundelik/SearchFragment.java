@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,8 +97,8 @@ public class SearchFragment extends Fragment {
                 String givenId = editText.getText().toString();
 
 
-                if(givenId.length() < 6 &&  Integer.parseInt(givenId) != 0 && Integer.parseInt(givenId) != 118) {
-                    editText.setError(getString(R.string.java2));
+                if(givenId.length() < 6 &&  Integer.parseInt(givenId) != 0 && Integer.parseInt(givenId) != 118 && !TextUtils.isEmpty(givenId)) {
+                    editText.setError(getString(R.string.java17));
                     return;
                 }
 
