@@ -8,9 +8,10 @@
         <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/activity_rgistrer.xml" value="0.19519927536231885" />
         <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/activity_verify_email.xml" value="0.33" />
-        <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/fragment_profile.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/fragment_search.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/fragment_search_result.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/activity_profile_settings.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/activity_verify_email.xml" value="0.24954710144927536" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/fragment_profile.xml" value="0.24954710144927536" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/fragment_search_result.xml" value="0.29270833333333335" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1328125" />
         <entry key="app/src/main/res/drawable/back.xml" value="0.2546875" />
         <entry key="app/src/main/res/drawable/edittext_rounded_corners.xml" value="0.30625" />

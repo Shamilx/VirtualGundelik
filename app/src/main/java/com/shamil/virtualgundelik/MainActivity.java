@@ -2,6 +2,7 @@ package com.shamil.virtualgundelik;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.SharedPreferences;
@@ -84,5 +85,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         item.setChecked(true);
+    }
+
+    public void Test_Method(DocumentSnapshot data) {
+        FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
+        fr.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+        fr.replace(R.id.flFragment,new SearchResult());
+        fr.commit();
     }
 }

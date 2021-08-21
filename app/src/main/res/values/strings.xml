@@ -33,7 +33,6 @@
     <string name="java15">Use only numbers!</string>
     <string name="java16">Please accept the confirmation sent to your new email address.</string>
     <string name="java17">Please use at least 6 symbols!</string>
-    <string name="java17">No correct E-mail address.</string>
     <string name="menu_profile">Profile</string>
     <string name="menu_tasks">Tasks</string>
     <string name="menu_search">Search</string>
@@ -58,4 +57,7 @@
     <string name="profile_changeToolTip10">Password cancel</string>
     <string name="profile_changeToolTip11">Firstname cancel</string>
     <string name="profile_changeToolTip12">Lastname cancel</string>
+    <string name="search_fragment_seterror1">Please give an ID to search!</string>
+    <string name="search_fragment_seterror2">ID can not start with 0!</string>
+    <string name="search_fragment_seterror3">We couldn\'t find any user with this ID!</string>
 </resources>

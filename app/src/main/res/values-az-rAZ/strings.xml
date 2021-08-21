@@ -34,7 +34,6 @@
     <string name="java15">Yanlız rəqəmlərdən istifadə edin!</string>
     <string name="java16">Zəhmət olmasa, yeni e -poçt ünvanınıza göndərilən doğrulamanı qəbul edin</string>
     <string name="java17">Zəhmət olmasa ən az 6 simvoldan istifadə edin!</string>
-    <string name="java17">E-poçt address-i doğru deyil</string>
     <string name="menu_profile">Profil</string>
     <string name="menu_tasks">Tapşırıqlar</string>
     <string name="menu_search">Axtar</string>
@@ -45,7 +44,6 @@
     <string name="profile_log_out">Hesabdan çıx</string>
     <string name="profile_settings_label">Parametrlər</string>
     <string name="back_to_profile">Profilə qayıt</string>
-    <string name="passwordReset">Parol sıfırlamaq</string>
     <string name="profile_changeToolTip1">E-poçt dəyişmək</string>
     <string name="profile_changeToolTip2">Parol dəyişmək</string>
     <string name="profile_changeToolTip3">Ad dəyişmək</string>
@@ -60,4 +58,7 @@
     <string name="profile_changeToolTip12">Soyad ləğv et</string>
     <string name="search_with_id">İD ilə axtar</string>
     <string name="search_fragment_search">Axtar</string>
+    <string name="search_fragment_seterror1">Zəhmət olmasa axtarmaq üçün İD verin!</string>
+    <string name="search_fragment_seterror2">İD 0 ilə başlaya bilməz!</string>
+    <string name="search_fragment_seterror3">Biz bu İD ilə istifadəçi tapa bilmədik!</string>
 </resources>

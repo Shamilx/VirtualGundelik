@@ -30,6 +30,7 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 /**
@@ -102,31 +103,42 @@ public class SearchFragment extends Fragment {
             public void onClick(View view) {
                 String givenId = editText.getText().toString();
 
+                if (TextUtils.isEmpty(givenId)) {
+                    editText.setError(getString(R.string.search_fragment_seterror1));
+                    return;
+                }
 
-                if(givenId.length() < 6 &&  Integer.parseInt(givenId) != 0 && Integer.parseInt(givenId) != 118 && !TextUtils.isEmpty(givenId)) {
+                if (givenId.startsWith("0") && givenId.length() != 1) {
+                    editText.setError(getString(R.string.search_fragment_seterror2));
+                    return;
+                }
+
+                if (givenId.length() < 6 && Integer.parseInt(givenId) != 0 && Integer.parseInt(givenId) != 118) {
                     editText.setError(getString(R.string.java17));
                     return;
                 }
 
                 FirebaseFirestore.getInstance().collection("Users")
-                        .whereEqualTo("id",Integer.parseInt(givenId))
-                        .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @SuppressLint("ResourceType")
+                        .whereEqualTo("id", Integer.parseInt(givenId))
+                        .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if (view.getId() == R.id.searchButton)
-                        {
-                            // ToDo: burda problem var (Cox ehtimal )
-                            FragmentManager fm = getChildFragmentManager();
-                            FragmentTransaction ft = fm.beginTransaction();
-                            ft.replace(R.layout.fragment_search_result, new SearchResult());
-                            ft.commit();
-                        }
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            QuerySnapshot snapshot = task.getResult();
+                            List<DocumentSnapshot> x = snapshot.getDocuments();
 
-                                          }
+                            if (x.isEmpty()) {
+                                editText.setError(getString(R.string.search_fragment_seterror3));
+                                return;
+                            }
+
+                            ((MainActivity) getActivity()).Test_Method(x.get(0));
+                        }
+                    }
                 });
             }
         });
+
 
     }
 }
