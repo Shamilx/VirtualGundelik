@@ -13,6 +13,7 @@
     <string name="informations">Informations</string>
     <string name="edit_text_hint3">First Name</string>
     <string name="edit_text_hint4">Last Name</string>
+    <string name="edit_text_hint5">Birth day</string>
     <string name="day_of_birth">Enter your date of birth</string>
     <string name="save">Save</string>
     <string name="java1">Please fill the inputs correctly!</string>
@@ -30,8 +31,8 @@
     <string name="java13">Try Again</string>
     <string name="java14">Email or password is wrong!</string>
     <string name="java15">Use only numbers!</string>
-    <string name="java15">No correct E-mail address.</string>
     <string name="java16">Please accept the confirmation sent to your new email address.</string>
+    <string name="java17">No correct E-mail address.</string>
     <string name="menu_profile">Profile</string>
     <string name="menu_tasks">Tasks</string>
     <string name="menu_search">Search</string>
@@ -44,6 +45,7 @@
     <string name="search_fragment_search">Search</string>
     <string name="profile_settings_label">Settings</string>
     <string name="back_to_profile">Back to profile</string>
+    <string name="passwordReset">Password Reset</string>
     <string name="profile_changeToolTip1">Email change</string>
     <string name="profile_changeToolTip2">Password change</string>
     <string name="profile_changeToolTip3">Firstname change</string>

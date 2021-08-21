@@ -1,12 +1,15 @@
 package com.shamil.virtualgundelik;
 
 import android.animation.ObjectAnimator;
-import android.app.FragmentTransaction;
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,6 +46,9 @@ public class SearchFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private LayoutInflater inflater;
+    private ViewGroup container;
+    private Bundle savedInstanceState;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -104,13 +110,20 @@ public class SearchFragment extends Fragment {
                 FirebaseFirestore.getInstance().collection("Users")
                         .whereEqualTo("id",Integer.parseInt(givenId))
                         .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @SuppressLint("ResourceType")
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        FragmentTransaction fr = getActivity().getFragmentManager().beginTransaction();
+                        if (view.getId() == R.id.searchButton)
+                        {
+                            // ToDo: burda problem var (Cox ehtimal )
+                            FragmentManager fm = getChildFragmentManager();
+                            FragmentTransaction ft = fm.beginTransaction();
+                            ft.replace(R.layout.fragment_search_result, new SearchResult());
+                            ft.commit();
+                        }
 
-                    }
+                                          }
                 });
-
             }
         });
 
