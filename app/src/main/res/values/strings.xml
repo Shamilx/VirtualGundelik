@@ -32,6 +32,7 @@
     <string name="java14">Email or password is wrong!</string>
     <string name="java15">Use only numbers!</string>
     <string name="java16">Please accept the confirmation sent to your new email address.</string>
+    <string name="java17">Please use at least 6 symbols!</string>
     <string name="java17">No correct E-mail address.</string>
     <string name="menu_profile">Profile</string>
     <string name="menu_tasks">Tasks</string>
@@ -45,7 +46,6 @@
     <string name="search_fragment_search">Search</string>
     <string name="profile_settings_label">Settings</string>
     <string name="back_to_profile">Back to profile</string>
-    <string name="passwordReset">Password Reset</string>
     <string name="profile_changeToolTip1">Email change</string>
     <string name="profile_changeToolTip2">Password change</string>
     <string name="profile_changeToolTip3">Firstname change</string>

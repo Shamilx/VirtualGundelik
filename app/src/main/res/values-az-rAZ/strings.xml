@@ -33,6 +33,7 @@
     <string name="java14">E-poçt və yaxud şifrə yanlışdır!</string>
     <string name="java15">Yanlız rəqəmlərdən istifadə edin!</string>
     <string name="java16">Zəhmət olmasa, yeni e -poçt ünvanınıza göndərilən doğrulamanı qəbul edin</string>
+    <string name="java17">Zəhmət olmasa ən az 6 simvoldan istifadə edin!</string>
     <string name="java17">E-poçt address-i doğru deyil</string>
     <string name="menu_profile">Profil</string>
     <string name="menu_tasks">Tapşırıqlar</string>
