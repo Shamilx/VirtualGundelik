@@ -172,6 +172,7 @@
         android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:paddingStart="8dp"
+        android:background="@drawable/circle_button"
         app:backgroundTint="@color/transparent"
         app:icon="@drawable/ic_chevron_left_black_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -180,6 +181,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.042"
-        app:shapeAppearanceOverlay="@style/Theme.VirtualGundelik"
         tools:ignore="RtlSymmetry,TextContrastCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
