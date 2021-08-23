@@ -1,7 +1,6 @@
 package Models;
 
 import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,15 +8,12 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.shamil.virtualgundelik.R;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class CustomAdapter extends BaseAdapter {
 
 
-    List<ListViewLine> lines = new ArrayList<>();
+    List<ListViewLine> lines;
     LayoutInflater inflater;
     Context context;
 
@@ -48,11 +44,15 @@ public class CustomAdapter extends BaseAdapter {
         TextView header = line.findViewById(R.id.list_view_header);
         TextView value = line.findViewById(R.id.list_view_value);
 
+
         ListViewLine myLine =  lines.get(i);
+
         header.setText(myLine.getHeader());
         value.setText(myLine.getValue());
+        line.setClickable(true);
+        line.setActivated(true);
+        line.setOnClickListener(myLine.getListener());
 
-        line.setMinimumHeight(80);
         return line;
     }
 }

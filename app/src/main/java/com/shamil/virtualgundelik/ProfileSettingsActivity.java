@@ -1,40 +1,20 @@
 package com.shamil.virtualgundelik;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
-import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageButton;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
+import android.widget.Toast;
 import com.google.gson.Gson;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import Models.CustomAdapter;
 import Models.ListViewLine;
 import Models.VirtualGundelikUser;
@@ -58,22 +38,30 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         VirtualGundelikUser myUser = GetUserInfo();
         List<ListViewLine> lines = new ArrayList<>();
 
-        lines.add(new ListViewLine(getString(R.string.edit_text_hint1),myUser.Email));
+        lines.add(new ListViewLine(getString(R.string.edit_text_hint1), myUser.Email, view -> {
+            Animation animation1 = new AlphaAnimation(0.3f, 1.0f);
+            animation1.setDuration(2000);
+            view.startAnimation(animation1);
+
+        }));
+
+        /*
+
         lines.add(new ListViewLine(getString(R.string.edit_text_hint2),"*******"));
+
         lines.add(new ListViewLine(getString(R.string.edit_text_hint3),myUser.FirstName));
+
         lines.add(new ListViewLine(getString(R.string.edit_text_hint4),myUser.LastName));
+
         lines.add(new ListViewLine("ID", String.valueOf(myUser.ID)));
+
+        */
 
         CustomAdapter adapter = new CustomAdapter(this,lines);
 
         listView.setAdapter(adapter);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        button.setOnClickListener(view -> finish());
     }
 
     private VirtualGundelikUser GetUserInfo() {
