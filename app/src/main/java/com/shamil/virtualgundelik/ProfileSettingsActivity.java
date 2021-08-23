@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -28,8 +29,12 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import Models.CustomAdapter;
+import Models.ListViewLine;
 
 public class ProfileSettingsActivity extends AppCompatActivity {
 
@@ -40,6 +45,29 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_settings);
 
+        init();
+    }
+
+    private void init() {
+        ImageButton button = findViewById(R.id.backProfileSettingsButton);
+        ListView listView = findViewById(R.id.profileSettingsList);
+
+        List<ListViewLine> lines = new ArrayList<>();
+        lines.add(new ListViewLine("Email","shamil.shamiyevx@gmail.com"));
+        lines.add(new ListViewLine("Firstname","Shamil"));
+        lines.add(new ListViewLine("Lastname","Shamiyev"));
+        lines.add(new ListViewLine("ID","0"));
+
+        CustomAdapter adapter = new CustomAdapter(this,lines);
+
+        listView.setAdapter(adapter);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     public static boolean validate(String emailStr) {
