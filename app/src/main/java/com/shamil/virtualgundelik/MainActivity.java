@@ -45,7 +45,9 @@ public class MainActivity extends AppCompatActivity {
                         if(snapshot.exists()) {
                             SharedPreferences mPrefs = getSharedPreferences("MyPrefs",MODE_PRIVATE);
                             VirtualGundelikUser virtualGundelikUser = new VirtualGundelikUser();
+                            FirebaseAuth.getInstance().getCurrentUser().reload();
 
+                            virtualGundelikUser.Email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
                             virtualGundelikUser.FirstName = snapshot.get("firstName").toString();
                             virtualGundelikUser.LastName = snapshot.get("lastName").toString();
                             virtualGundelikUser.BirthDate = snapshot.get("birthDate").toString();

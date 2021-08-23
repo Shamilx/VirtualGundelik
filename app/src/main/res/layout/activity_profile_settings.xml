@@ -51,7 +51,7 @@
         android:id="@+id/profileSettingsList"
         android:layout_width="match_parent"
         android:divider="#431B3F"
-        android:dividerHeight="5.00sp"
+        android:dividerHeight="1.00sp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

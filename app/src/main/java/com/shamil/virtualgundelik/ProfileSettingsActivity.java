@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +28,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +37,7 @@ import java.util.regex.Pattern;
 
 import Models.CustomAdapter;
 import Models.ListViewLine;
+import Models.VirtualGundelikUser;
 
 public class ProfileSettingsActivity extends AppCompatActivity {
 
@@ -52,11 +55,14 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         ImageButton button = findViewById(R.id.backProfileSettingsButton);
         ListView listView = findViewById(R.id.profileSettingsList);
 
+        VirtualGundelikUser myUser = GetUserInfo();
         List<ListViewLine> lines = new ArrayList<>();
-        lines.add(new ListViewLine("Email","shamil.shamiyevx@gmail.com"));
-        lines.add(new ListViewLine("Firstname","Shamil"));
-        lines.add(new ListViewLine("Lastname","Shamiyev"));
-        lines.add(new ListViewLine("ID","0"));
+
+        lines.add(new ListViewLine(getString(R.string.edit_text_hint1),myUser.Email));
+        lines.add(new ListViewLine(getString(R.string.edit_text_hint2),"*******"));
+        lines.add(new ListViewLine(getString(R.string.edit_text_hint3),myUser.FirstName));
+        lines.add(new ListViewLine(getString(R.string.edit_text_hint4),myUser.LastName));
+        lines.add(new ListViewLine("ID", String.valueOf(myUser.ID)));
 
         CustomAdapter adapter = new CustomAdapter(this,lines);
 
@@ -68,6 +74,13 @@ public class ProfileSettingsActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private VirtualGundelikUser GetUserInfo() {
+        SharedPreferences mPrefs = getSharedPreferences("MyPrefs",MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = mPrefs.getString("User","");
+        return gson.fromJson(json,VirtualGundelikUser.class);
     }
 
     public static boolean validate(String emailStr) {

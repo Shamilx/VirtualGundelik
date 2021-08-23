@@ -13,15 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.gson.Gson;
 
 import Models.VirtualGundelikUser;
@@ -67,9 +60,6 @@ public class ProfileFragment extends Fragment {
         MaterialButton button2 = getView().findViewById(R.id.profileMaterialButton2);
         MaterialButton button3 = getView().findViewById(R.id.profileMaterialButton3);
 
-        FirebaseAuth auth =  FirebaseAuth.getInstance();
-        DocumentReference ref = FirebaseFirestore.getInstance().collection("Users").document(auth.getCurrentUser().getUid());
-
         SharedPreferences mPrefs = getActivity().getSharedPreferences("MyPrefs",getActivity().MODE_PRIVATE);
         Gson gson = new Gson();
         String json = mPrefs.getString("User","");
@@ -78,25 +68,6 @@ public class ProfileFragment extends Fragment {
         userName.setText(virtualGundelikUser.FirstName);
         userId.setText("@" + String.valueOf(virtualGundelikUser.ID));
 
-/*
-        ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if(task.isSuccessful()) {
-                    DocumentSnapshot snap = task.getResult();
-                    if(snap.exists()) {
-                        userId.setText("@" + snap.get("id").toString());
-                        userName.setText(snap.get("firstName").toString());
-                    }
-                } else {
-                    new MaterialAlertDialogBuilder(getActivity())
-                            .setTitle(getString(R.string.java4))
-                            .setMessage(getString(R.string.java5))
-                            .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
-                }
-            }
-        });
-*/
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
