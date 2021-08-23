@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.firestore.DocumentSnapshot;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link SearchResult#newInstance} factory method to
@@ -22,8 +24,10 @@ public class SearchResult extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
     private String mParam2;
+    private DocumentSnapshot _data;
 
     public SearchResult() {}
+    public SearchResult(DocumentSnapshot data) {_data = data; }
     public static SearchResult newInstance(String param1, String param2) {
         SearchResult fragment = new SearchResult();
         Bundle args = new Bundle();

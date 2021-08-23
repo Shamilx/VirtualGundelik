@@ -167,19 +167,18 @@
         app:layout_constraintTop_toTopOf="@+id/view2"
         app:layout_constraintVertical_bias="0.84" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/backToProfileButton"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:paddingStart="8dp"
-        android:background="@drawable/circle_button"
-        app:backgroundTint="@color/transparent"
-        app:icon="@drawable/ic_chevron_left_black_24dp"
+    <ImageButton
+        android:id="@+id/backProfileSettingsButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@color/transparent"
+        android:src="@drawable/ic_chevron_left_black_24dp"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.042"
-        tools:ignore="RtlSymmetry,TextContrastCheck" />
+        android:contentDescription="GoBack" />
 </androidx.constraintlayout.widget.ConstraintLayout>

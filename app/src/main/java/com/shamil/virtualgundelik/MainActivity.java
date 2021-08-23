@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
     public void Test_Method(DocumentSnapshot data) {
         FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
         fr.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-        fr.replace(R.id.flFragment,new SearchResult());
+        fr.replace(R.id.flFragment,new SearchResult(data));
         fr.commit();
     }
 }
