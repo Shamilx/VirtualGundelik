@@ -61,4 +61,6 @@
     <string name="search_fragment_seterror1">Zəhmət olmasa axtarmaq üçün İD verin!</string>
     <string name="search_fragment_seterror2">İD 0 ilə başlaya bilməz!</string>
     <string name="search_fragment_seterror3">Biz bu İD ilə istifadəçi tapa bilmədik!</string>
+    <string name="update_email">E-poçt yenilənməsi</string>
+    <string name="provide_email_adress">Şifrənizi daxil edin</string>
 </resources>

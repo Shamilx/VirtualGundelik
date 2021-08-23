@@ -1,8 +1,12 @@
 package com.shamil.virtualgundelik;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -10,6 +14,11 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.common.base.Verify;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,23 +48,23 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         List<ListViewLine> lines = new ArrayList<>();
 
         lines.add(new ListViewLine(getString(R.string.edit_text_hint1), myUser.Email, view -> {
-            Animation animation1 = new AlphaAnimation(0.3f, 1.0f);
-            animation1.setDuration(2000);
-            view.startAnimation(animation1);
+            Intent intent = new Intent(ProfileSettingsActivity.this,EmailUpdateActivity.class);
+            startActivity(intent);
+        }));
+
+
+        lines.add(new ListViewLine(getString(R.string.edit_text_hint2), "*******", view -> {
 
         }));
 
-        /*
+        lines.add(new ListViewLine(getString(R.string.edit_text_hint3), myUser.FirstName, view -> {
 
-        lines.add(new ListViewLine(getString(R.string.edit_text_hint2),"*******"));
+        }));
 
-        lines.add(new ListViewLine(getString(R.string.edit_text_hint3),myUser.FirstName));
+        lines.add(new ListViewLine(getString(R.string.edit_text_hint4), myUser.LastName, view -> {
 
-        lines.add(new ListViewLine(getString(R.string.edit_text_hint4),myUser.LastName));
+        }));
 
-        lines.add(new ListViewLine("ID", String.valueOf(myUser.ID)));
-
-        */
 
         CustomAdapter adapter = new CustomAdapter(this,lines);
 

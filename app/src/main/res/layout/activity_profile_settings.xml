@@ -34,8 +34,8 @@
 
     <ImageButton
         android:id="@+id/backProfileSettingsButton"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:background="@color/transparent"
         android:src="@drawable/ic_chevron_left_black_24dp"
         android:scaleType="fitCenter"

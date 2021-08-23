@@ -13,7 +13,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginBottom="78dp"
         android:text="@string/sign_in_text"
-        android:textColor="#431B3F"
+        android:textColor="#C51162"
         android:textSize="30sp"
         android:textStyle="italic"
         android:typeface="sans"
