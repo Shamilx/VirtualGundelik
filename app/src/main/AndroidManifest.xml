@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VirtualGundelik">
         <activity
-            android:name=".EmailUpdateActivity"
-            android:exported="true" />
-        <activity
             android:name=".ProfileSettingsActivity"
             android:exported="true" />
         <activity

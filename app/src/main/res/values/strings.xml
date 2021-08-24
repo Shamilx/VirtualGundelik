@@ -48,6 +48,4 @@
     <string name="search_fragment_seterror1">Please give an ID to search!</string>
     <string name="search_fragment_seterror2">ID can not start with 0!</string>
     <string name="search_fragment_seterror3">We couldn\'t find any user with this ID!</string>
-    <string name="update_email">Update Email</string>
-    <string name="provide_email_adress">Enter your password</string>
 </resources>

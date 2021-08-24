@@ -31,45 +31,38 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         frameLayout = findViewById(R.id.flFragment);
 
-        SharedPreferences myPrefs = getSharedPreferences("MyPrefs",MODE_PRIVATE);
+        Toast.makeText(MainActivity.this, "We are initliazing your data!", Toast.LENGTH_LONG).show();
+        DocumentReference ref = FirebaseFirestore.getInstance().collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
-        if(!myPrefs.contains("User")) {
-            Toast.makeText(MainActivity.this,"We are initliazing your data!",Toast.LENGTH_LONG).show();   // TODO: add string resource
-            DocumentReference ref = FirebaseFirestore.getInstance().collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        ref.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot snapshot = task.getResult();
+                if (snapshot.exists()) {
+                    SharedPreferences mPrefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                    VirtualGundelikUser virtualGundelikUser = new VirtualGundelikUser();
+                    FirebaseAuth.getInstance().getCurrentUser().reload();
 
-            ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if(task.isSuccessful()) {
-                        DocumentSnapshot snapshot = task.getResult();
-                        if(snapshot.exists()) {
-                            SharedPreferences mPrefs = getSharedPreferences("MyPrefs",MODE_PRIVATE);
-                            VirtualGundelikUser virtualGundelikUser = new VirtualGundelikUser();
-                            FirebaseAuth.getInstance().getCurrentUser().reload();
+                    virtualGundelikUser.Email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                    virtualGundelikUser.FirstName = snapshot.get("firstName").toString();
+                    virtualGundelikUser.LastName = snapshot.get("lastName").toString();
+                    virtualGundelikUser.BirthDate = snapshot.get("birthDate").toString();
+                    virtualGundelikUser.ID = Integer.parseInt(snapshot.get("id").toString());
 
-                            virtualGundelikUser.Email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-                            virtualGundelikUser.FirstName = snapshot.get("firstName").toString();
-                            virtualGundelikUser.LastName = snapshot.get("lastName").toString();
-                            virtualGundelikUser.BirthDate = snapshot.get("birthDate").toString();
-                            virtualGundelikUser.ID = Integer.parseInt(snapshot.get("id").toString());
-
-                            SharedPreferences.Editor prefsEditor = mPrefs.edit();
-                            prefsEditor.clear();
-                            Gson gson = new Gson();
-                            String json = gson.toJson(virtualGundelikUser);
-                            prefsEditor.putString("User", json);
-                            prefsEditor.apply();
-                        }
-                    }
+                    SharedPreferences.Editor prefsEditor = mPrefs.edit();
+                    prefsEditor.clear();
+                    Gson gson = new Gson();
+                    String json = gson.toJson(virtualGundelikUser);
+                    prefsEditor.putString("User", json);
+                    prefsEditor.apply();
                 }
-            });
-        }
+            }
+        });
     }
 
     public void Profile_OnClick(MenuItem item) {
         if (frameLayout.findViewById(R.id.profileFragment) == null) {
             FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
-            fr.setCustomAnimations(R.anim.slide_in_right,R.anim.slide_out_left);
+            fr.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
             fr.replace(R.id.flFragment, new ProfileFragment());
             fr.commit();
         }
@@ -80,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     public void Search_OnClick(MenuItem item) {
         if (frameLayout.findViewById(R.id.searchFragment) == null) {
             FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
-            fr.setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+            fr.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             fr.replace(R.id.flFragment, new SearchFragment());
             fr.commit();
 
@@ -92,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
     public void Test_Method(DocumentSnapshot data) {
         FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
         fr.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-        fr.replace(R.id.flFragment,new SearchResult(data));
+        fr.replace(R.id.flFragment, new SearchResult(data));
         fr.commit();
     }
 }

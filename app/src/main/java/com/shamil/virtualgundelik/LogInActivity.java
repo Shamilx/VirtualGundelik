@@ -45,12 +45,16 @@ public class LogInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         if(FirebaseAuth.getInstance().getCurrentUser() != null) {
+            FirebaseAuth.getInstance().getCurrentUser().reload();
+
             if(FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()) {
                 Intent intent = new Intent(LogInActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             } else {
-                // TODO : INITIALIZE
+                Intent intent = new Intent(LogInActivity.this,VerifyEmailActivity.class);
+                startActivity(intent);
+                finish();
             }
         }
 

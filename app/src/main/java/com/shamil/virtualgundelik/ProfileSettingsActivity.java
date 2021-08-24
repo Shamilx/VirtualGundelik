@@ -48,8 +48,7 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         List<ListViewLine> lines = new ArrayList<>();
 
         lines.add(new ListViewLine(getString(R.string.edit_text_hint1), myUser.Email, view -> {
-            Intent intent = new Intent(ProfileSettingsActivity.this,EmailUpdateActivity.class);
-            startActivity(intent);
+
         }));
 
 
