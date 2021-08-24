@@ -57,11 +57,13 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         }));
 
         lines.add(new ListViewLine(getString(R.string.edit_text_hint3), myUser.FirstName, view -> {
-
+            Intent intent = new Intent(ProfileSettingsActivity.this,ChangeNameActivity.class);
+            startActivity(intent);
         }));
 
         lines.add(new ListViewLine(getString(R.string.edit_text_hint4), myUser.LastName, view -> {
-
+            Intent intent = new Intent(ProfileSettingsActivity.this,ChangeNameActivity.class);
+            startActivity(intent);
         }));
 
 

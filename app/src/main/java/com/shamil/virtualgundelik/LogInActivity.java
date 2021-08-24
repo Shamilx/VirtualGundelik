@@ -42,8 +42,11 @@ public class LogInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+
+        boolean goOn = true;
+
         if(FirebaseAuth.getInstance().getCurrentUser() != null) {
+            goOn = false;
             FirebaseAuth.getInstance().getCurrentUser().reload();
             if(FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()) {
                 FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
@@ -72,7 +75,11 @@ public class LogInActivity extends AppCompatActivity {
                 });
             }
         }
-        init();
+
+        if(goOn) {
+            setContentView(R.layout.activity_login);
+            init();
+        }
     }
 
     public static boolean validate(String emailStr) {
