@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         frameLayout = findViewById(R.id.flFragment);
 
-        Toast.makeText(MainActivity.this, "We are initliazing your data!", Toast.LENGTH_LONG).show();
         DocumentReference ref = FirebaseFirestore.getInstance().collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
         ref.get().addOnCompleteListener(task -> {

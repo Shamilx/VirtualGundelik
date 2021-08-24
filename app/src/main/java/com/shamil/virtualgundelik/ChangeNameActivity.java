@@ -53,7 +53,8 @@ public class ChangeNameActivity extends AppCompatActivity {
             DocumentReference documentReference = firestore.collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
             documentReference.update("firstName",editText1.getText().toString(),"lastName",editText2.getText().toString());
-
+            // TODO: Update Settings
+            finish();
         });
 
         button2.setOnClickListener(view -> {

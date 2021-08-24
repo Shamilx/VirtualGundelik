@@ -54,7 +54,7 @@
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/view2"
-            app:layout_constraintVertical_bias="0.688"
+            app:layout_constraintVertical_bias="0.622"
             tools:ignore="TextContrastCheck" />
 
         <com.google.android.material.button.MaterialButton
@@ -74,7 +74,7 @@
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.882"
+            app:layout_constraintVertical_bias="0.749"
             tools:ignore="TextContrastCheck" />
 
         <View

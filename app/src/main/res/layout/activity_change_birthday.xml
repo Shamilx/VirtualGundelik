@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChangeNameActivity">
+    tools:context=".ChangeBirthdayActivity">
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,7 +19,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <ImageButton
-            android:id="@+id/backProfileSettingsButton"
+            android:id="@+id/changeBirthdayGoBack"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:background="@color/transparent"
@@ -36,63 +37,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="@string/change_name"
+            android:text="@string/change_birthday"
             android:textColor="@color/white"
             android:textSize="27sp" />
     </RelativeLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outlinedTextField"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="350dp"
+    <DatePicker
+        android:id="@+id/changeBirthdayDatePicker"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="320dp"
-        android:hint="@string/edit_text_hint3"
+        android:layout_gravity="center_horizontal"
+        android:calendarTextColor="@color/purple_700"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+        android:spinnersShown="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.554"
-        app:startIconDrawable="@drawable/ic_baseline_person_24dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/changeNameEdiText1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="text"
-            android:maxLength="30"
-            android:maxLines="1"
-            android:scrollHorizontally="true" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outlinedTextField2"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="270dp"
-        android:hint="@string/edit_text_hint4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/outlinedTextField"
-        app:layout_constraintVertical_bias="0.551"
-        app:startIconDrawable="@drawable/ic_baseline_person_24dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/changeNameEdiText2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="text"
-            android:maxLength="30"
-            android:maxLines="1"
-            android:scrollHorizontally="true" />
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintVertical_bias="0.348" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/SaveMaterialButton"
+        android:id="@+id/changeBirthdaySave"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:hint="@string/save"
@@ -103,7 +70,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/outlinedTextField2"
+        app:layout_constraintTop_toBottomOf="@+id/changeBirthdayDatePicker"
         app:layout_constraintVertical_bias="0.195" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

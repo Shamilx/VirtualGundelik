@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VirtualGundelik">
         <activity
+            android:name=".ChangeBirthdayActivity"
+            android:exported="true" />
+        <activity
             android:name=".ChangeNameActivity"
             android:exported="true" />
         <activity

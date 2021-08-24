@@ -66,6 +66,10 @@ public class ProfileSettingsActivity extends AppCompatActivity {
             startActivity(intent);
         }));
 
+        lines.add(new ListViewLine(getString(R.string.edit_text_hint5), myUser.BirthDate, view -> {
+            Intent intent = new Intent(ProfileSettingsActivity.this,ChangeBirthdayActivity.class);
+            startActivity(intent);
+        }));
 
         CustomAdapter adapter = new CustomAdapter(this,lines);
 

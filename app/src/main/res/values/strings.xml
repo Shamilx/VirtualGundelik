@@ -13,7 +13,7 @@
     <string name="informations">Informations</string>
     <string name="edit_text_hint3">First Name</string>
     <string name="edit_text_hint4">Last Name</string>
-    <string name="edit_text_hint5">Birth day</string>
+    <string name="edit_text_hint5">Birthday</string>
     <string name="day_of_birth">Enter your date of birth</string>
     <string name="save">Save</string>
     <string name="java1">Please fill the inputs correctly!</string>
@@ -49,4 +49,5 @@
     <string name="search_fragment_seterror2">ID can not start with 0!</string>
     <string name="search_fragment_seterror3">We couldn\'t find any user with this ID!</string>
     <string name="change_name">Change Name</string>
+    <string name="change_birthday">Change Birthday</string>
 </resources>
