@@ -43,21 +43,35 @@ public class LogInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         if(FirebaseAuth.getInstance().getCurrentUser() != null) {
             FirebaseAuth.getInstance().getCurrentUser().reload();
-
             if(FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()) {
-                Intent intent = new Intent(LogInActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            } else {
-                Intent intent = new Intent(LogInActivity.this,VerifyEmailActivity.class);
-                startActivity(intent);
-                finish();
+                FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
+                DocumentReference docIdRef = rootRef.collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                docIdRef.get().addOnCompleteListener(task1 -> {
+                    if (task1.isSuccessful()) {
+                        DocumentSnapshot document = task1.getResult();
+                        if (document.exists()) {
+                            Intent intent = new Intent(LogInActivity.this,MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            Intent intent = new Intent(LogInActivity.this,GetInfoActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    } else {
+                        openRegister.setVisibility(TextView.VISIBLE);
+                        MaterialButton.setVisibility(com.google.android.material.button.MaterialButton.VISIBLE);
+                        progressBar.setVisibility(ProgressBar.INVISIBLE);
+                        new MaterialAlertDialogBuilder(LogInActivity.this)
+                                .setTitle(getString(R.string.java4))
+                                .setMessage(getString(R.string.java5))
+                                .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
+                    }
+                });
             }
         }
-
         init();
     }
 
@@ -73,7 +87,6 @@ public class LogInActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progress_circular);
         openRegister = findViewById(R.id.OpenRegister);
         Auth = FirebaseAuth.getInstance();
-
 
         MaterialButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,29 +128,26 @@ public class LogInActivity extends AppCompatActivity {
                                 FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
                                 DocumentReference docIdRef = rootRef.collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
-                                docIdRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                        if (task.isSuccessful()) {
-                                            DocumentSnapshot document = task.getResult();
-                                            if (document.exists()) {
-                                                Intent intent = new Intent(LogInActivity.this,MainActivity.class);
-                                                startActivity(intent);
-                                                finish();
-                                            } else {
-                                                Intent intent = new Intent(LogInActivity.this,GetInfoActivity.class);
-                                                startActivity(intent);
-                                                finish();
-                                            }
+                                docIdRef.get().addOnCompleteListener(task1 -> {
+                                    if (task1.isSuccessful()) {
+                                        DocumentSnapshot document = task1.getResult();
+                                        if (document.exists()) {
+                                            Intent intent = new Intent(LogInActivity.this,MainActivity.class);
+                                            startActivity(intent);
+                                            finish();
                                         } else {
-                                            openRegister.setVisibility(TextView.VISIBLE);
-                                            MaterialButton.setVisibility(com.google.android.material.button.MaterialButton.VISIBLE);
-                                            progressBar.setVisibility(ProgressBar.INVISIBLE);
-                                            new MaterialAlertDialogBuilder(LogInActivity.this)
-                                                    .setTitle(getString(R.string.java4))
-                                                    .setMessage(getString(R.string.java5))
-                                                    .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
+                                            Intent intent = new Intent(LogInActivity.this,GetInfoActivity.class);
+                                            startActivity(intent);
+                                            finish();
                                         }
+                                    } else {
+                                        openRegister.setVisibility(TextView.VISIBLE);
+                                        MaterialButton.setVisibility(com.google.android.material.button.MaterialButton.VISIBLE);
+                                        progressBar.setVisibility(ProgressBar.INVISIBLE);
+                                        new MaterialAlertDialogBuilder(LogInActivity.this)
+                                                .setTitle(getString(R.string.java4))
+                                                .setMessage(getString(R.string.java5))
+                                                .setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
                                     }
                                 });
                             } else {
