@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences myPrefs = getSharedPreferences("MyPrefs",MODE_PRIVATE);
 
         if(!myPrefs.contains("User")) {
-            Toast.makeText(MainActivity.this,"We are initliazing your data!",Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this,"We are initliazing your data!",Toast.LENGTH_LONG).show();   // TODO: add string resource
             DocumentReference ref = FirebaseFirestore.getInstance().collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
             ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
