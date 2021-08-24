@@ -13,7 +13,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginBottom="78dp"
         android:text="@string/register_text"
-        android:textColor="#F67280"
+        android:textColor="#250E18"
         android:textSize="30sp"
         android:textStyle="italic"
         android:typeface="sans"

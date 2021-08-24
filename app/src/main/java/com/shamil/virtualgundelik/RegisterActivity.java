@@ -53,6 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(new Intent(RegisterActivity.this,VerifyEmailActivity.class));
                 finish();
             } else {
+                registerMatieralButton.setVisibility(MaterialButton.VISIBLE);
                 progressBar.setVisibility(ProgressBar.INVISIBLE);
                 new MaterialAlertDialogBuilder(RegisterActivity.this)
                         .setTitle(getString(R.string.java4))
@@ -111,23 +112,23 @@ public class RegisterActivity extends AppCompatActivity {
                 String txt_password_repeat = PasswordRepeatEditText.getText().toString();
 
                 if (checkForEmptyInputAndWarnUser()) {
-                    registerMatieralButton.setVisibility(MaterialButton.INVISIBLE);
+                    registerMatieralButton.setVisibility(MaterialButton.VISIBLE);
                     progressBar.setVisibility(ProgressBar.INVISIBLE);
                     Toast.makeText(RegisterActivity.this, getString(R.string.java6), Toast.LENGTH_LONG).show();
                 } else if (!validate(txt_email)) {
-                    registerMatieralButton.setVisibility(MaterialButton.INVISIBLE);
+                    registerMatieralButton.setVisibility(MaterialButton.VISIBLE);
                     progressBar.setVisibility(ProgressBar.INVISIBLE);
                     EmailEditText.setError(getString(R.string.java3));
                 } else if (txt_password.length() < 6) {
-                    registerMatieralButton.setVisibility(MaterialButton.INVISIBLE);
+                    registerMatieralButton.setVisibility(MaterialButton.VISIBLE);
                     progressBar.setVisibility(ProgressBar.INVISIBLE);
                     PasswordEditText.setError(getString(R.string.java2));
                 } else if (txt_password_repeat.length() < 6) {
-                    registerMatieralButton.setVisibility(MaterialButton.INVISIBLE);
+                    registerMatieralButton.setVisibility(MaterialButton.VISIBLE);
                     progressBar.setVisibility(ProgressBar.INVISIBLE);
                     PasswordRepeatEditText.setError(getString(R.string.java2));
                 } else if (!checkPass()) {
-                    registerMatieralButton.setVisibility(MaterialButton.INVISIBLE);
+                    registerMatieralButton.setVisibility(MaterialButton.VISIBLE);
                     progressBar.setVisibility(ProgressBar.INVISIBLE);
                     PasswordRepeatEditText.setError(getString(R.string.java7));
                 } else {
@@ -137,7 +138,7 @@ public class RegisterActivity extends AppCompatActivity {
                         if (isNewUser) {
                             RegisterUser(txt_email, txt_password);
                         } else {
-                            registerMatieralButton.setVisibility(MaterialButton.INVISIBLE);
+                            registerMatieralButton.setVisibility(MaterialButton.VISIBLE);
                             progressBar.setVisibility(ProgressBar.INVISIBLE);
                             new MaterialAlertDialogBuilder(RegisterActivity.this)
                                     .setTitle(getString(R.string.java4))

@@ -10,7 +10,7 @@
         android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="290dp"
-        android:background="#431B3F"
+        android:background="#F67280"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

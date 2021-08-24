@@ -54,7 +54,7 @@
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/view2"
-            app:layout_constraintVertical_bias="0.632"
+            app:layout_constraintVertical_bias="0.688"
             tools:ignore="TextContrastCheck" />
 
         <com.google.android.material.button.MaterialButton
@@ -63,18 +63,18 @@
             android:layout_height="wrap_content"
             android:text="@string/profile_log_out"
             android:textAlignment="center"
-            android:textColor="#A90000"
+            android:textColor="@color/red"
             android:textSize="18sp"
             android:textStyle="bold"
             app:backgroundTint="#431B3F"
             app:icon="@drawable/ic_baseline_west_24"
-            app:iconTint="@color/white"
+            app:iconTint="@color/red"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.759"
+            app:layout_constraintVertical_bias="0.882"
             tools:ignore="TextContrastCheck" />
 
         <View
