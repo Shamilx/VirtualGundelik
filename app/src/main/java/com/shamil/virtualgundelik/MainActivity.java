@@ -87,4 +87,6 @@ public class MainActivity extends AppCompatActivity {
         fr.replace(R.id.flFragment, new SearchResult(data));
         fr.commit();
     }
+
+
 }

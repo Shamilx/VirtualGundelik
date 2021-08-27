@@ -68,4 +68,6 @@ public class ChangeNameActivity extends AppCompatActivity {
         String json = mPrefs.getString("User","");
         return gson.fromJson(json,VirtualGundelikUser.class);
     }
+
+
 }

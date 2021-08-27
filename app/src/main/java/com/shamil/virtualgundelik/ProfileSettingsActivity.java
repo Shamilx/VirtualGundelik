@@ -42,8 +42,24 @@ public class ProfileSettingsActivity extends AppCompatActivity {
 
     private void init() {
         ImageButton button = findViewById(R.id.backProfileSettingsButton);
-        ListView listView = findViewById(R.id.profileSettingsList);
+        UpdateListView();
+        button.setOnClickListener(view -> finish());
+    }
 
+    private VirtualGundelikUser GetUserInfo() {
+        SharedPreferences mPrefs = getSharedPreferences("MyPrefs",MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = mPrefs.getString("User","");
+        return gson.fromJson(json,VirtualGundelikUser.class);
+    }
+
+    public static boolean validate(String emailStr) {
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
+        return matcher.find();
+    }
+
+    private void UpdateListView() {
+        ListView listView = findViewById(R.id.profileSettingsList);
         VirtualGundelikUser myUser = GetUserInfo();
         List<ListViewLine> lines = new ArrayList<>();
 
@@ -74,20 +90,11 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         CustomAdapter adapter = new CustomAdapter(this,lines);
 
         listView.setAdapter(adapter);
-
-        button.setOnClickListener(view -> finish());
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        UpdateListView();
 
-    private VirtualGundelikUser GetUserInfo() {
-        SharedPreferences mPrefs = getSharedPreferences("MyPrefs",MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = mPrefs.getString("User","");
-        return gson.fromJson(json,VirtualGundelikUser.class);
     }
-
-    public static boolean validate(String emailStr) {
-        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
-        return matcher.find();
-    }
-
 }
