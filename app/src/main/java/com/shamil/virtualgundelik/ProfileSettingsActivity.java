@@ -19,6 +19,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.common.base.Verify;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
@@ -95,7 +98,35 @@ public class ProfileSettingsActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-
+        UpdatePrefs();
         UpdateListView();
+    }
+
+    public void UpdatePrefs() {
+        DocumentReference ref = FirebaseFirestore.getInstance().collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+        ref.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot snapshot = task.getResult();
+                if (snapshot.exists()) {
+                    SharedPreferences mPrefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                    VirtualGundelikUser virtualGundelikUser = new VirtualGundelikUser();
+                    FirebaseAuth.getInstance().getCurrentUser().reload();
+
+                    virtualGundelikUser.Email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                    virtualGundelikUser.FirstName = snapshot.get("firstName").toString();
+                    virtualGundelikUser.LastName = snapshot.get("lastName").toString();
+                    virtualGundelikUser.BirthDate = snapshot.get("birthDate").toString();
+                    virtualGundelikUser.ID = Integer.parseInt(snapshot.get("id").toString());
+
+                    SharedPreferences.Editor prefsEditor = mPrefs.edit();
+                    prefsEditor.clear();
+                    Gson gson = new Gson();
+                    String json = gson.toJson(virtualGundelikUser);
+                    prefsEditor.putString("User", json);
+                    prefsEditor.apply();
+                }
+            }
+        });
     }
 }

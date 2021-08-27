@@ -37,7 +37,6 @@ public class ChangeBirthdayActivity extends AppCompatActivity {
             FirebaseFirestore firestore = FirebaseFirestore.getInstance();
             DocumentReference documentReference = firestore.collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
             documentReference.update("birthDate",birthDate);
-            // TODO: Update Settings
             finish();
         });
 
@@ -45,6 +44,7 @@ public class ChangeBirthdayActivity extends AppCompatActivity {
             finish();
         });
     }
+
 
     private String toStringTime(int day, int month, int year) {
         return new String(day + ":" + month + ":" + year);
