@@ -50,4 +50,5 @@
     <string name="search_fragment_seterror3">We couldn\'t find any user with this ID!</string>
     <string name="change_name">Change Name</string>
     <string name="change_birthday">Change Birthday</string>
+    <string name="change_saved">Saved!</string>
 </resources>

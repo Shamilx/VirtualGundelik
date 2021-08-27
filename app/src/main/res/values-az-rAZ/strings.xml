@@ -51,4 +51,5 @@
     <string name="search_fragment_seterror3">Biz bu İD ilə istifadəçi tapa bilmədik!</string>
     <string name="change_name">Adı dəyişdirin</string>
     <string name="change_birthday">Doğum tarixini dəyiş</string>
+    <string name="change_saved">Saved!</string>
 </resources>

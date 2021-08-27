@@ -60,13 +60,7 @@ public class ProfileFragment extends Fragment {
         MaterialButton button2 = getView().findViewById(R.id.profileMaterialButton2);
         MaterialButton button3 = getView().findViewById(R.id.profileMaterialButton3);
 
-        SharedPreferences mPrefs = getActivity().getSharedPreferences("MyPrefs",getActivity().MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = mPrefs.getString("User","");
-        VirtualGundelikUser virtualGundelikUser = gson.fromJson(json,VirtualGundelikUser.class);
-
-        userName.setText(virtualGundelikUser.FirstName);
-        userId.setText("@" + String.valueOf(virtualGundelikUser.ID));
+        UpdateUser(userId, userName);
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,10 +85,28 @@ public class ProfileFragment extends Fragment {
         });
     }
 
+    private void UpdateUser(TextView userId, TextView userName) {
+        SharedPreferences mPrefs = getActivity().getSharedPreferences("MyPrefs",getActivity().MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = mPrefs.getString("User","");
+        VirtualGundelikUser virtualGundelikUser = gson.fromJson(json,VirtualGundelikUser.class);
+
+        userName.setText(virtualGundelikUser.FirstName);
+        userId.setText("@" + String.valueOf(virtualGundelikUser.ID));
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        TextView userId = getView().findViewById(R.id.user_id);
+        TextView userName = getView().findViewById(R.id.user_name);
+        UpdateUser(userId,userName);
     }
 }

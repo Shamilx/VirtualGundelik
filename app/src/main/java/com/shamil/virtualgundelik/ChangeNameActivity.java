@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -53,8 +54,7 @@ public class ChangeNameActivity extends AppCompatActivity {
             DocumentReference documentReference = firestore.collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
             documentReference.update("firstName",editText1.getText().toString(),"lastName",editText2.getText().toString());
-            // TODO: Update Settings
-            finish();
+            Toast.makeText(ChangeNameActivity.this, R.string.change_saved,Toast.LENGTH_LONG).show();
         });
 
         button2.setOnClickListener(view -> {

@@ -113,6 +113,6 @@ public class GetInfoActivity extends AppCompatActivity {
     }
 
     private String toStringTime(int day, int month, int year) {
-        return new String(day + ":" + month + ":" + year);
+        return new String(day + ":" + month + 1 + ":" + year);
     }
 }

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,6 +38,7 @@ public class ChangeBirthdayActivity extends AppCompatActivity {
             FirebaseFirestore firestore = FirebaseFirestore.getInstance();
             DocumentReference documentReference = firestore.collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
             documentReference.update("birthDate",birthDate);
+            Toast.makeText(ChangeBirthdayActivity.this, R.string.change_saved,Toast.LENGTH_LONG).show();
             finish();
         });
 
@@ -47,7 +49,7 @@ public class ChangeBirthdayActivity extends AppCompatActivity {
 
 
     private String toStringTime(int day, int month, int year) {
-        return new String(day + ":" + month + ":" + year);
+        return new String(day + ":" + month + 1 + ":" + year);
     }
 
 }
