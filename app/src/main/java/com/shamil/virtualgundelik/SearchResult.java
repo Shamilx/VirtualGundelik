@@ -25,6 +25,12 @@ public class SearchResult extends Fragment {
     private String mParam1;
     private String mParam2;
     private DocumentSnapshot _data;
+    private TextView loading;
+    private TextView user_name_result;
+    private TextView user_lastname_result;
+    private TextView user_email_result;
+    private TextView user_birth_day_result;
+    private Thread download;
 
     public SearchResult() {}
     public SearchResult(DocumentSnapshot data) {_data = data; }
@@ -51,11 +57,6 @@ public class SearchResult extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        TextView loading = getView().findViewById(R.id.loading);
-        TextView user_name_result = getView().findViewById(R.id.user_name_result);
-        TextView user_lastname_result = getView().findViewById(R.id.user_lastname_result);
-        TextView user_email_result = getView().findViewById(R.id.user_email_result);
-        TextView user_birth_day_result = getView().findViewById(R.id.user_birth_day_result);
 
 
     }

@@ -91,10 +91,11 @@ public class ProfileSettingsActivity extends AppCompatActivity {
 
         listView.setAdapter(adapter);
     }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        UpdateListView();
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        UpdateListView();
     }
 }
