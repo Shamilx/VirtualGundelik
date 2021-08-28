@@ -70,9 +70,9 @@ public class ProfileSettingsActivity extends AppCompatActivity {
 
         }));
 
-
         lines.add(new ListViewLine(getString(R.string.edit_text_hint2), "*******", view -> {
-
+            Intent intent = new Intent(ProfileSettingsActivity.this,ChangePasswordActivity.class);
+            startActivity(intent);
         }));
 
         lines.add(new ListViewLine(getString(R.string.edit_text_hint3), myUser.FirstName, view -> {

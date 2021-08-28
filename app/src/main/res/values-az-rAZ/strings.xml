@@ -51,5 +51,12 @@
     <string name="search_fragment_seterror3">Biz bu İD ilə istifadəçi tapa bilmədik!</string>
     <string name="change_name">Adı dəyişdirin</string>
     <string name="change_birthday">Doğum tarixini dəyiş</string>
-    <string name="change_saved">Saved!</string>
+    <string name="change_saved">Saxlandı!</string>
+    <string name="old_password">Şifrə</string>
+    <string name="new_password">Yeni şifrə</string>
+    <string name="change_password">Şifrəni dəyiş</string>
+    <string name="not_same_pass">Şifrələr eyni deyil</string>
+    <string name="wrong_pass">Yanlış şifrə</string>
+    <string name="failed">Xəta baş verdi!</string>
+    <string name="password_cant_be_same">Yeni şifrəniz əvvəlki ilə eyni ola bilməz!</string>
 </resources>

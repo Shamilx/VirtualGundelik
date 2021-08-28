@@ -55,6 +55,7 @@ public class ChangeNameActivity extends AppCompatActivity {
 
             documentReference.update("firstName",editText1.getText().toString(),"lastName",editText2.getText().toString());
             Toast.makeText(ChangeNameActivity.this, R.string.change_saved,Toast.LENGTH_LONG).show();
+            finish();
         });
 
         button2.setOnClickListener(view -> {
