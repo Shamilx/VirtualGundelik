@@ -59,10 +59,10 @@
     <string name="failed">Failed</string>
     <string name="password_cant_be_same">New password and old one can not be same!</string>
     <string name="groups">Groups</string>
-    <string name="creat_group">Creat group</string>
+    <string name="creat_group">Create group</string>
     <string name="group_name">Group name</string>
-    <string name="group_description">Group descripton (Optional)</string>
-    <string name="add_members">Add memeber</string>
-    <string name="delete_members">Delete memeber</string>
+    <string name="group_description">Group description (Optional)</string>
+    <string name="add_members">Add members</string>
     <string name="creat_group_cancel_button">Cancel</string>
+    <string name="create">Create</string>
 </resources>

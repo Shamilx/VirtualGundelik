@@ -62,8 +62,8 @@
     <string name="groups">Qruplar</string>
     <string name="creat_group">Qrup yaratmaq</string>
     <string name="group_name">Qrup adı</string>
-    <string name="group_description">Qrup məlumatları (İsteğe bağlı)</string>
+    <string name="group_description">Qrup məlumatları (Istəyə bağlı)</string>
     <string name="add_members">Üzv əlavə edin</string>
-    <string name="delete_members">Üzv silin</string>
     <string name="creat_group_cancel_button">Ləğv et</string>
+    <string name="create">Yarat</string>
 </resources>

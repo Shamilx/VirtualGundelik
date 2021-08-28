@@ -6,20 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".AddGroupActivity">
 
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/creat_group"
-        android:textColor="#250E18"
-        android:textSize="30sp"
+        android:background="#431B3F"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.104"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.048" />
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/creat_group"
+            android:textColor="@color/white"
+            android:textSize="27sp" />
+
+        <ImageButton
+            android:id="@+id/AddGroupGoBack"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@color/transparent"
+            android:contentDescription="GoBack"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_chevron_left_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.043"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.042" />
+    </RelativeLayout>
+
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/outlinedTextField"
@@ -49,66 +71,38 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/outlinedTextField1"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="344dp"
+        android:layout_width="350dp"
         android:layout_height="176dp"
-        android:layout_marginBottom="320dp"
         android:hint="@string/group_description"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.537"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.953"
-        app:startIconDrawable="@drawable/ic_baseline_group_24">
+        app:layout_constraintTop_toBottomOf="@+id/outlinedTextField"
+        app:layout_constraintVertical_bias="0.26">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/groupDescription"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="text"
             android:maxLength="254"
-            android:maxLines="1"
             android:scrollHorizontally="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/addMemeber"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="@string/add_members"
+        android:backgroundTint="#431B3F"
+        android:text="@string/create"
+        app:icon="@drawable/ic_check_black_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.134"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.692"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/deleteMember"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/delete_members"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.872"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.692"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/creatGroupCancelButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/creat_group_cancel_button"
-        app:backgroundTint="#730235"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.871"
+        app:layout_constraintTop_toBottomOf="@+id/outlinedTextField1"
+        app:layout_constraintVertical_bias="0.328"
         tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
