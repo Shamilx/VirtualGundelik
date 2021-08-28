@@ -4,15 +4,18 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/drawable/round_button.xml" value="0.2890625" />
+        <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/activity_add_group.xml" value="0.33" />
         <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/activity_login.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/activity_main.xml" value="0.18840579710144928" />
         <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/activity_profile_settings.xml" value="0.33" />
         <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/activity_rgistrer.xml" value="0.19519927536231885" />
+        <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/activity_search_result.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/activity_verify_email.xml" value="0.33" />
+        <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/fragment_groups.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/fragment_profile.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/fragment_search.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/fragment_search_result.xml" value="0.5" />
+        <entry key="..\:/Users/Omero4/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/fragment_search_result.xml" value="0.25" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VirtualGundelik/app/src/main/res/drawable/circle_button.xml" value="0.238" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VirtualGundelik/app/src/main/res/drawable/ic_chevron_left_black_24dp.xml" value="0.238" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VirtualGundelik/app/src/main/res/layout/activity_change_birthday.xml" value="0.29270833333333335" />
@@ -48,20 +51,14 @@
         <entry key="app/src/main/res/drawable/ic_wave_1_.xml" value="0.22027027027027027" />
         <entry key="app/src/main/res/drawable/test.xml" value="0.22027027027027027" />
         <entry key="app/src/main/res/layout-v26/activity_verify_email.xml" value="0.23854166666666668" />
-        <entry key="app/src/main/res/layout/activity_add_group.xml" value="0.2947916666666667" />
-        <entry key="app/src/main/res/layout/activity_change_birthday.xml" value="0.3528913779459302" />
-        <entry key="app/src/main/res/layout/activity_change_name.xml" value="0.13196555217831812" />
-        <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.20764095543243222" />
         <entry key="app/src/main/res/layout/activity_get_info.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.3213455954633308" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_profile_settings.xml" value="0.10168583598526021" />
+        <entry key="app/src/main/res/layout/activity_profile_settings.xml" value="0.29010416666666666" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_verify_email.xml" value="0.23854166666666668" />
-        <entry key="app/src/main/res/layout/fragment_groups.xml" value="0.28072916666666664" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.21924353173597486" />
-        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.10177651426730618" />
-        <entry key="app/src/main/res/layout/fragment_search_result.xml" value="0.27730812351007367" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.17" />
         <entry key="app/src/main/res/layout/list_view_style.xml" value="0.29010416666666666" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.23854166666666668" />
       </map>
