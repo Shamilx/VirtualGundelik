@@ -3,6 +3,7 @@
     <item
         android:id="@+id/menuGroupsItem"
         android:title="@string/menu_groups"
+        android:onClick="Groups_OnClick"
         android:icon="@drawable/ic_baseline_group_24"/>
     <item
         android:id="@+id/menuSearchItem"

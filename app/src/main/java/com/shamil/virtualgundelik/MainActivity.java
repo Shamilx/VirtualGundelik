@@ -56,12 +56,16 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
+        fr.replace(R.id.flFragment, new GroupsFragment());
+        fr.commit();
     }
 
     public void Profile_OnClick(MenuItem item) {
         if (frameLayout.findViewById(R.id.profileFragment) == null) {
             FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
-            fr.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+            fr.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
             fr.replace(R.id.flFragment, new ProfileFragment());
             fr.commit();
         }
@@ -72,10 +76,9 @@ public class MainActivity extends AppCompatActivity {
     public void Search_OnClick(MenuItem item) {
         if (frameLayout.findViewById(R.id.searchFragment) == null) {
             FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
-            fr.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+            fr.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
             fr.replace(R.id.flFragment, new SearchFragment());
             fr.commit();
-
         }
 
         item.setChecked(true);
@@ -83,10 +86,20 @@ public class MainActivity extends AppCompatActivity {
 
     public void Test_Method(DocumentSnapshot data) {
         FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
-        fr.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+        fr.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
         fr.replace(R.id.flFragment, new SearchResult(data));
         fr.commit();
     }
 
 
+    public void Groups_OnClick(MenuItem item) {
+        if(frameLayout.findViewById(R.id.groupFragment) == null) {
+            FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
+            fr.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+            fr.replace(R.id.flFragment, new GroupsFragment());
+            fr.commit();
+        }
+
+        item.setChecked(true);
+    }
 }

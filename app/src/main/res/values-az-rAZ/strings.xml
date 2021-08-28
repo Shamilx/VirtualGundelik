@@ -59,4 +59,5 @@
     <string name="wrong_pass">Yanlış şifrə</string>
     <string name="failed">Xəta baş verdi!</string>
     <string name="password_cant_be_same">Yeni şifrəniz əvvəlki ilə eyni ola bilməz!</string>
+    <string name="groups">Qruplar</string>
 </resources>
